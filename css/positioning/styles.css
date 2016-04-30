@@ -5,10 +5,15 @@ img#octopus {
 	z-index: -1;
 }
 
-img#glasses {
-
-}
-
 img#hat {
-
+	position:absolute;
+	left: 185px;
+	top: 15px;
 }
+
+img#glasses {
+	position:absolute;
+	left: 250px;
+	top: 155px;
+}
+
