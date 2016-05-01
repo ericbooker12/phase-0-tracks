@@ -1,5 +1,9 @@
 img#octopus {
+<<<<<<< HEAD
 	margin: 
+=======
+	position: relative;
+>>>>>>> 39d135b3fcedb47f8f949f6e85925c60066a06aa
 	left: 200px;
 	top: 50px;
 	z-index: -1;
