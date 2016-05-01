@@ -1,23 +1,28 @@
 img#octopus {
-<<<<<<< HEAD
-	margin: 
-=======
-	position: relative;
->>>>>>> 39d135b3fcedb47f8f949f6e85925c60066a06aa
-	left: 200px;
-	top: 50px;
+	display: block;
+	margin: 0 auto;
+	margin-top: 100px;
+	left: 50px
 	z-index: -1;
 }
 
 img#hat {
-	position:absolute;
-	left: 185px;
-	top: 15px;
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	margin-top: -330px;
+	left: 10px;
+	z-index: 1;
+
+	
 }
 
 img#glasses {
-	position:absolute;
-	left: 250px;
-	top: 155px;
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	margin-top: -25px;
+	left: 2px;
+	z-index: 1;
 }
 
