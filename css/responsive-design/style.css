@@ -45,7 +45,7 @@ body {
  
 }
 
-.m1 {
+#main-area{
   position: relative;
   width: 70%;
   display: inline-block;

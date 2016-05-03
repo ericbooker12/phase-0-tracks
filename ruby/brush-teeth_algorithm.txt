@@ -1,0 +1,34 @@
+1. Pick up tooth brush with your left hand.
+2. Pick up toothpaste tube with right hand.
+3. Remove cap on toothpaste tube.
+4. Place toothpaste end adjacent to bristles on toothbrush.
+5. If the toothbrush does not contain tooth paste:
+    - squeeze toothpaste tube with light pressure.
+6. If the toothbrush does contain toothpaste:
+    - stop squeezing the toothpaste tube.
+7. Replace cap on toothpaste tube.
+8. Place toothpaste tube on the counter.
+9. Move toothbrush from left hand to right hand.
+11. Turn water on and place toothbrush bristles under faucet for 2 seconds
+12. Turn water off.
+13. Insert bristle end of toothbrush into mouth.
+14. Move bristles to bottom left teeth.
+    - perform steps 15 through 17.
+
+15. Change angle to 90 deg and move toothbrush back and forth 30 times.
+16. Change angle to 45 deg and move toothbrush back and forth 30 times.
+17. Change angle to 135 deg and move toothbrush back and forth 30 times.
+
+18. Move bristles to bottom right teeth.
+    - perform steps 15 through 17.
+19. Move bristles to upper left teeth
+    - perform steps 15 through 17.
+20. Move bristles to upper right teeth 
+    - perform steps 15 through 17.
+    
+21. Turn water on.
+22. Insert bristle end of toothbrush under faucet for 5 seconds.
+23. Tap toothbrush on sink 3 times.
+24. Replace toothbrush on counter.
+25. Got to work.
+
