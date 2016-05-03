@@ -1,0 +1,9 @@
+- If you are going up:
+    - press the up button.
+    - otherwise press the down button.
+- Wait for the elevator door to open.
+- When the elevator door opens, enter the elevator.
+- Determine what floor you are going to and call it 'dest-floor'.
+- Press the number that corresponds the dest-floor.
+- Wait for the elevator to got to dest-floor.
+- When the door opens, exit the elevator.
