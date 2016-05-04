@@ -12,7 +12,13 @@ img#hat {
 	margin: 0 auto;
 	margin-top: -330px;
 	left: 10px;
+<<<<<<< HEAD
 	z-index: 0;
+=======
+	z-index: 1;
+
+	
+>>>>>>> dfd5dfe06ccb5cb7cbad9dec0575f3fdf39886e0
 }
 
 img#glasses {
