@@ -13,12 +13,12 @@ def ask_vampire
 
 	puts "Would you like some garlic bread from our cafeteria? y or n"
 	# likes_garlic = gets.chomp
-	likes_garlic = "yes"
+	likes_garlic = "n"
 	likes_garlic = convert_to_boolean(likes_garlic)
 
 	puts "Would you like to be put on our health insurance policy? y or n"
 	# needs_insurance = gets.chomp
-	needs_insurance = "no"
+	needs_insurance = "y"
 	needs_insurance = convert_to_boolean(needs_insurance)
 
 	puts "------------------------------------------------------------------------------"
@@ -32,13 +32,12 @@ def ask_vampire
 end
 
 # This method converts a yes/no statement into boolean true/false
-	def convert_to_boolean(input)
-		if input == "y" || input == "Y" || input == "yes" || input == "Yes" ||input == "YES"
-			return true
-		else
-			return false
-		end
+def convert_to_boolean(input)
+	if input == "y" || input == "Y" || input == "yes" || input == "Yes" ||input == "YES"
+		return true
+	else
+		return false
 	end
+end
 
 ask_vampire
-
