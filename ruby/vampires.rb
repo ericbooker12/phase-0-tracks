@@ -4,7 +4,14 @@ def ask_vampire
 
 	puts "How old are you?"
 	vampire_age = gets.chomp.to_f 
+
 	puts "What year were you born?"
-	puts "Would you like some garlic bread from our cafeteria?"
-	puts " Would you like to be put on our health insurance policy?"
+	year_born = gets.chomp.to_i
+
+	puts "Would you like some garlic bread from our cafeteria? y or n"
+	likes_garlic = gets.chomp
+
+	puts "Would you like to be put on our health insurance policy? y or n"
+	needs_insurance = gets.chomp
+
 end
