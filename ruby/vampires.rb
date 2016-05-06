@@ -29,7 +29,11 @@ def ask_vampire
 	puts "likes_garlic: #{likes_garlic}, object type: #{likes_garlic.class}"
 	puts "needs_insurance: #{needs_insurance}, object type: #{needs_insurance.class}"
 
-end
+	puts "------------------------------------------------------------------------------"
+
+
+
+end # end of ask_vampire method
 
 # This method converts a yes/no statement into boolean true/false
 def convert_to_boolean(input)
