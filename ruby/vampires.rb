@@ -44,4 +44,17 @@ def convert_to_boolean(input)
 	end
 end
 
+def does_age_match(birth_year, age)
+	current_year = 2016
+	years_since_birth = current_year - birth_year
+	if years_since_birth - age == 1 || years_since_birth - age == 0
+		return true
+	else
+		return false
+	end
+
+end
+
+
+
 ask_vampire
