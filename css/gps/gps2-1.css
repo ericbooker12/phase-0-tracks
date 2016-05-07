@@ -1,0 +1,25 @@
+html {
+  width: 1000px;
+}
+
+
+
+.column-1 {
+  border: 2px solid black;
+  width: 460px;
+  display: inline-table;
+  padding: 10px;
+  margin-right: 5px;
+  background-color: red;
+ 
+}
+
+.column-2 {
+  border: 2px solid black;
+  width: 460px;
+  display: inline-table;
+  padding: 10px;
+  margin-left: 5px;
+  padding-bottom: 30px;
+  background-color: pink;
+}
