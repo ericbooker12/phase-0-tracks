@@ -11,45 +11,59 @@ def ask_vampire
 		puts "\nEmployee #{i + 1}:"
 
 		puts "What is your name."
-		name = gets.chomp    # push answer to array
-		# name << "Eric"   		# automatically fill array for testing, comment out when finished.
+		# name = gets.chomp  
+		name = "Eric Booker"
 
 		puts "How old are you?"
-		age = gets.chomp.to_i 
-		# age << 38.to_i
+		# age = gets.chomp.to_i 
+		age = 18.to_i
 
 		puts "What year were you born?"
-		year_born = gets.chomp.to_i
-		# year_born << 1977.to_i
+		# year_born = gets.chomp.to_i
+		year_born = 1977.to_i
 
 		# check to see if age is correct with does_age_match helper method.
-		# append answer to got_age_right array.
 		got_age_right = does_age_match(year_born, age) 
 
 		puts "Would you like some garlic bread from our cafeteria? y or n"
-		likes_garlic = gets.chomp
-		# garlic_answer = "n"
+		# capture yes/no answer in likes_garlic, convert it to boolean.
+		# likes_garlic = convert_to_boolean(gets.chomp) 
+		likes_garlic = true
 
-		# convert yes/no to boolean and push it to array
-		likes_garlic = convert_to_boolean(likes_garlic) 
+		puts "Would you like to be put on our health inurance policy? y or n"
+		# needs_insurance = convert_to_boolean(gets.chomp)
+		needs_insurance = true
 
-		puts "Would you like to be put on our health insurance policy? y or n"
-		# needs_insurance  = gets.chomp
-		# insurance_answer = "n"
+		puts "Do you have any allergies? y or n"
+		has_allergies = convert_to_boolean(gets.chomp)
 
-		needs_insurance = convert_to_boolean(gets.chomp)
+		allergies = [] # Create allergies array to store allerigies in next question.
+		if has_allergies
+			puts "List allergies one at a time. Type \"done\" when finished."
 
-		puts "Do you have any allergies?"
-
+			loop do
+				allergy = gets.chomp
+				if allergy != "done"
+					allergies.push(allergy)
+				else
+					break
+				end
+				
+			end
+			has_allergies = false #set to false so loop doesn't start again.
+		end
+			
+		
+		
 		# Check object types. Comment out when done.
 		# puts "------------------------------------------------------------------------------"
 		# puts "Object types:"
 		# puts "num_of_employees: #{num_of_employees}, object type: #{num_of_employees.class}"
-		# puts "name: #{name[i]}, object type: #{name[i].class}"
-		# puts "age: #{age[i]}, object type: #{age[i].class}"
-		# puts "year_born: #{year_born[i]}, object type: #{year_born[i].class}"
-		# puts "likes_garlic: #{likes_garlic[i]}, object type: #{likes_garlic[i].class}"
-		# puts "needs_insurance: #{needs_insurance[i]}, object type: #{needs_insurance[i].class}"
+		# puts "name: #{name}, object type: #{name.class}"
+		# puts "age: #{age}, object type: #{age.class}"
+		# puts "year_born: #{year_born}, object type: #{year_born.class}"
+		# puts "likes_garlic: #{likes_garlic}, object type: #{likes_garlic.class}"
+		# puts "needs_insurance: #{needs_insurance}, object type: #{needs_insurance.class}"
 
 		puts "------------------------------------------------------------------------------"
 		puts "Employee #{i + 1}:"
@@ -59,6 +73,11 @@ def ask_vampire
 		puts "Got age right? #{got_age_right}"
 		puts "Likes garlic? #{likes_garlic}"
 		puts "Needs insurance? #{needs_insurance}"
+		if allergies[0] == nil 
+			puts "No allergies"
+		else
+			puts "Allergies: #{allergies}"
+		end
 
 		if name == "Drake Cula" || name == "Tu Fang"
 			puts "*** Definitely a vampire ***"
