@@ -19,7 +19,7 @@ def get_hamster_info
 
 	if age ==  ""
 		age = nil
-	endgti 
+	end
 
 	age = age.to_f
 
