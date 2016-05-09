@@ -11,28 +11,28 @@ def ask_vampire
 		puts "\nEmployee #{i + 1}:"
 
 		puts "What is your name."
-		# name = gets.chomp  
-		name = "Eric Booker"
+		name = gets.chomp  
+		# name = "Eric Booker"   # This line is used for testing purposes
 
 		puts "How old are you?"
-		# age = gets.chomp.to_i 
-		age = 18.to_i
+		age = gets.chomp.to_i 
+		# age = 18.to_i			# for testing
 
 		puts "What year were you born?"
-		# year_born = gets.chomp.to_i
-		year_born = 1977.to_i
+		year_born = gets.chomp.to_i
+		# year_born = 1977.to_i		# for testing
 
 		# check to see if age is correct with does_age_match helper method.
 		got_age_right = does_age_match(year_born, age) 
 
 		puts "Would you like some garlic bread from our cafeteria? y or n"
 		# capture yes/no answer in likes_garlic, convert it to boolean.
-		# likes_garlic = convert_to_boolean(gets.chomp) 
-		likes_garlic = true
+		likes_garlic = convert_to_boolean(gets.chomp) 
+		# likes_garlic = true		# for testing
 
 		puts "Would you like to be put on our health inurance policy? y or n"
-		# needs_insurance = convert_to_boolean(gets.chomp)
-		needs_insurance = true
+		needs_insurance = convert_to_boolean(gets.chomp)
+		# needs_insurance = true		# for testing
 
 		puts "Do you have any allergies? y or n"
 		has_allergies = convert_to_boolean(gets.chomp)
@@ -75,6 +75,8 @@ def ask_vampire
 		# puts "likes_garlic: #{likes_garlic}, object type: #{likes_garlic.class}"
 		# puts "needs_insurance: #{needs_insurance}, object type: #{needs_insurance.class}"
 
+
+		# Print data
 		puts "------------------------------------------------------------------------------"
 		puts "Employee #{i + 1}:"
 		puts "Name: #{name}"
