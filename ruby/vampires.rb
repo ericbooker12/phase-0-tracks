@@ -103,13 +103,16 @@ def ask_vampire
 		if name == "Drake Cula" || name == "Tu Fang"
 			puts "*** Definitely a vampire ***"
 
+		elsif red_flag
+			puts "Probably a vampire."
+
 		elsif !got_age_right && !likes_garlic && !needs_insurance
 			puts "Almost certainly a vampire."
 
 		elsif (got_age_right) && (likes_garlic || needs_insurance)
 			puts "Probably not a vampire."
 
-		elsif (!got_age_right && ( !likes_garlic || !needs_insurance)) || red_flag
+		elsif (!got_age_right && ( !likes_garlic || !needs_insurance))
 			puts "Probably a vampire."
 			
 		else 
