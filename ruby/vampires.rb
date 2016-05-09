@@ -11,46 +11,56 @@ def ask_vampire
 		puts "\nEmployee #{i + 1}:"
 
 		puts "What is your name."
-		# name = gets.chomp  
-		name = "Eric Booker"
+		name = gets.chomp  
+		# name = "Eric Booker"   # This line is used for testing purposes
 
 		puts "How old are you?"
-		# age = gets.chomp.to_i 
-		age = 18.to_i
+		age = gets.chomp.to_i 
+		# age = 18.to_i			# for testing
 
 		puts "What year were you born?"
-		# year_born = gets.chomp.to_i
-		year_born = 1977.to_i
+		year_born = gets.chomp.to_i
+		# year_born = 1977.to_i		# for testing
 
 		# check to see if age is correct with does_age_match helper method.
 		got_age_right = does_age_match(year_born, age) 
 
 		puts "Would you like some garlic bread from our cafeteria? y or n"
 		# capture yes/no answer in likes_garlic, convert it to boolean.
-		# likes_garlic = convert_to_boolean(gets.chomp) 
-		likes_garlic = true
+		likes_garlic = convert_to_boolean(gets.chomp) 
+		# likes_garlic = true		# for testing
 
 		puts "Would you like to be put on our health inurance policy? y or n"
-		# needs_insurance = convert_to_boolean(gets.chomp)
-		needs_insurance = true
+		needs_insurance = convert_to_boolean(gets.chomp)
+		# needs_insurance = true		# for testing
 
 		puts "Do you have any allergies? y or n"
 		has_allergies = convert_to_boolean(gets.chomp)
 
 		allergies = [] # Create allergies array to store allerigies in next question.
-		if has_allergies
+
+		# create flag and initialize to false. 
+		# set flag to true if employee is allergic to sunshine.
+		red_flag = false 
+
+		if has_allergies	
 			puts "List allergies one at a time. Type \"done\" when finished."
 
 			loop do
 				allergy = gets.chomp
+
 				if allergy != "done"
-					allergies.push(allergy)
+					allergies.push(allergy)  # push user input to allergies array.
+					if allergy == "sunshine"
+						red_flag = true  # set flag to true if allergic to sunshine and break out of loop
+						break
+					end
 				else
-					break
+					break # break out of loop if user types "done"
 				end
 				
 			end
-			has_allergies = false #set to false so loop doesn't start again.
+			has_allergies = false # set has allergies to false so loop doesn't start again.
 		end
 			
 		
@@ -65,6 +75,8 @@ def ask_vampire
 		# puts "likes_garlic: #{likes_garlic}, object type: #{likes_garlic.class}"
 		# puts "needs_insurance: #{needs_insurance}, object type: #{needs_insurance.class}"
 
+
+		# Print data
 		puts "------------------------------------------------------------------------------"
 		puts "Employee #{i + 1}:"
 		puts "Name: #{name}"
@@ -73,22 +85,34 @@ def ask_vampire
 		puts "Got age right? #{got_age_right}"
 		puts "Likes garlic? #{likes_garlic}"
 		puts "Needs insurance? #{needs_insurance}"
+
 		if allergies[0] == nil 
 			puts "No allergies"
 		else
-			puts "Allergies: #{allergies}"
+
+			count = 0
+			puts "Allergies: "
+			while count < allergies.size
+
+				p allergies[count]
+				count += 1
+			end
+
 		end
 
 		if name == "Drake Cula" || name == "Tu Fang"
 			puts "*** Definitely a vampire ***"
 
+		elsif red_flag
+			puts "Probably a vampire."
+
 		elsif !got_age_right && !likes_garlic && !needs_insurance
 			puts "Almost certainly a vampire."
 
-		elsif (got_age_right) && (likes_garlic || needs_insurance) 
+		elsif (got_age_right) && (likes_garlic || needs_insurance)
 			puts "Probably not a vampire."
 
-		elsif !got_age_right && ( !likes_garlic || !needs_insurance)
+		elsif (!got_age_right && ( !likes_garlic || !needs_insurance))
 			puts "Probably a vampire."
 			
 		else 
@@ -100,6 +124,8 @@ def ask_vampire
 		i += 1
 
 	end # end of question do loop.
+
+	puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
 
 end # end of ask_vampire method
 
