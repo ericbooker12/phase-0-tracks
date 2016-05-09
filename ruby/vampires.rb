@@ -38,19 +38,29 @@ def ask_vampire
 		has_allergies = convert_to_boolean(gets.chomp)
 
 		allergies = [] # Create allergies array to store allerigies in next question.
-		if has_allergies
+
+		# create flag and initialize to false. 
+		# set flag to true if employee is allergic to sunshine.
+		red_flag = false 
+
+		if has_allergies	
 			puts "List allergies one at a time. Type \"done\" when finished."
 
 			loop do
 				allergy = gets.chomp
+
 				if allergy != "done"
-					allergies.push(allergy)
+					allergies.push(allergy)  # push user input to allergies array.
+					if allergy == "sunshine"
+						red_flag = true  # set flag to true if allergic to sunshine and break out of loop
+						break
+					end
 				else
-					break
+					break # break out of loop if user types "done"
 				end
 				
 			end
-			has_allergies = false #set to false so loop doesn't start again.
+			has_allergies = false # set has allergies to false so loop doesn't start again.
 		end
 			
 		
@@ -73,10 +83,19 @@ def ask_vampire
 		puts "Got age right? #{got_age_right}"
 		puts "Likes garlic? #{likes_garlic}"
 		puts "Needs insurance? #{needs_insurance}"
+
 		if allergies[0] == nil 
 			puts "No allergies"
 		else
-			puts "Allergies: #{allergies}"
+
+			count = 0
+			puts "Allergies: "
+			while count < allergies.size
+
+				p allergies[count]
+				count += 1
+			end
+
 		end
 
 		if name == "Drake Cula" || name == "Tu Fang"
@@ -85,10 +104,10 @@ def ask_vampire
 		elsif !got_age_right && !likes_garlic && !needs_insurance
 			puts "Almost certainly a vampire."
 
-		elsif (got_age_right) && (likes_garlic || needs_insurance) 
+		elsif (got_age_right) && (likes_garlic || needs_insurance)
 			puts "Probably not a vampire."
 
-		elsif !got_age_right && ( !likes_garlic || !needs_insurance)
+		elsif (!got_age_right && ( !likes_garlic || !needs_insurance)) || red_flag
 			puts "Probably a vampire."
 			
 		else 
@@ -100,6 +119,8 @@ def ask_vampire
 		i += 1
 
 	end # end of question do loop.
+
+	puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
 
 end # end of ask_vampire method
 
