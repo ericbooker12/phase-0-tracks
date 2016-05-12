@@ -11,6 +11,7 @@ puts "iNvEsTiGaTiOn".swapcase!
 puts ""
 puts "zom".insert(2, 'o')
 
+# Alternate strategy
 o_word = "zom"
 o_pos = o_word.index('o')
 puts "zom".insert(o_pos + 1, o_word[o_pos])
