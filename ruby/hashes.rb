@@ -36,7 +36,7 @@ def get_client_info
 		puts "Enter number of children"
 		children = gets.chomp.to_i
 	else
-		children = 0
+		num_of_children = nil
 	end
 
 	puts "Enter decor theme or type \"none\"."
@@ -56,6 +56,11 @@ def get_client_info
 	if decor.downcase == "none"
 		designer_hash.delete(:decor_theme)
 	end
+
+	if num_of_children == nil
+		designer_hash.delete(:num_of_children)
+	end
+
 
 	# Print the hash table to screen
 	puts border_top
@@ -120,5 +125,10 @@ def convert_to_bool(yes_or_no)
 		return false
 	end
 end
+
+def print_data_with_borders(data)
+
+end
+
 
 get_client_info
