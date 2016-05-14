@@ -25,7 +25,13 @@ def get_client_info
 
 	if has_children
 		puts "Enter number of children"
-		children = gets.chomp.to_i
+		if gets.chomp.class == Fixnum
+			children = gets.chomp.to_i
+		else 
+			puts "Must be a number. Try again"
+		end
+	else
+		children = 0
 	end
 
 	puts "Enter decor theme or type \"none\"."
@@ -38,7 +44,10 @@ def get_client_info
 		num_of_children: children,
 		decor_theme: decor
 	}
-end
+
+	puts designer_hash
+
+end #get_client_info
 
 
 def convert_to_bool(yes_or_no)
@@ -48,5 +57,7 @@ def convert_to_bool(yes_or_no)
 		return false
 	end
 end
+
+get_client_info
 
 
