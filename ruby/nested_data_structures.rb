@@ -1,6 +1,6 @@
 
 =begin
-Design a data structure that lists several California breweries and the beers they brew.
+Construct a state (Calfornia)
 1. Create a hash called california_breweries.
 2. Add names of breweries to hash as keys.
 3. Populate the keys with names of beers sold by the breweries.
@@ -12,27 +12,23 @@ def cal_brews
 
 	# names of breweries :
 	california_breweries = { 
-		'21st Amendment' => [],
-		'Drakes' => [],
-		'Faction' => [],
-		'Third St. Aleworks' => [],
-		'Sierra Nevada' => [],
-		'Russian River' => [],
-		'Lost Coast' => [],
-		'Mount St. Helena' => [],
-		'Gordon Biersh' => [],
-		'Moylans' => [],
-		'Hopmonk' => [], 
-		'Mendicino' => [],
-		'Napa Smith' => [],
-		'Anchor' => [],
-		'Speakeasy' => [],
-		'Firestone Walker' => [],
-		'Highway 1' => [],
-		'Bear Republic' => [],
-		'Lagunitas'v=> [],
-		'St. Florian' => [],
-		'Stumptown' => []
+		'21st Amendment' => ['Down To Earth', 'Brew Free! or Die', 'Back in Black'],
+		'Drakes' => ['1500', 'Hefe', 'Denoginizer'],
+		'Faction' => ['Southern Aroma', 'Faction Pale', 'Faction Imperial Stout'],
+		'Third St. Aleworks' => ['Annadel Pale', 'Puddle Jumper', 'Bombay Rouge'],
+		'Sierra Nevada' => ['Pale Ale', 'Hop Hunter', 'Torpedo'],
+		'Russian River' => ['Redemption', 'Happy Hops', 'Russian River Porter'],
+		'Lost Coast' => ['Downtown Brown', 'Great White', 'Ally Cat'],
+		'Gordon Biersh' => ['Winterbock', 'Pilsner', 'Hefeweizen'],
+		'Hopmonk' => ['Tavern Ale', 'Kellerbier', 'IPA'], 
+		'Mendicino' => ['Red Tail', 'Eye of the Hawk', 'Blue Heron'],
+		'Napa Smith' => ['Amber Ale', 'Bonfire', 'Lost Dog'],
+		'Anchor' => ['Anchor Steam', 'Anchor Lager', 'Anchor Porter'],
+		'Highway 1' => ['Amberdexterous', 'Pepper in the Rye'],
+		'Bear Republic' => ['Racer 5', 'Racer X', 'Red Rocket'],
+		'Lagunitas' => ['Little Sumpin', 'Daytime', 'Hairy Eyeball'],
+		'St. Florian' => ['Brown Ale', 'Flashover'],
+		'Stumptown' => ['Rat Bastard', 'Bushwacker', 'Donkey Punch']
 	}
 
 end # cal_brews
