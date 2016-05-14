@@ -126,9 +126,4 @@ def convert_to_bool(yes_or_no)
 	end
 end
 
-def print_data_with_borders(data)
-
-end
-
-
 get_client_info
