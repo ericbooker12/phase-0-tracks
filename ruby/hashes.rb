@@ -12,6 +12,12 @@
 
 
 def get_client_info
+
+	# Create borders to put around printed data.
+	border = "----------------------------------"
+	border_top = "\nYour data:\n#{border}" # border with leading newline character for top
+	border_bottom = "#{border}\n\n" # border with 2 trailing newline characters for bottom
+
 	# Get data from client.
 	puts "Enter client name:"
 	client = gets.chomp
@@ -46,13 +52,15 @@ def get_client_info
 		decor_theme: decor
 	}
 
-	# Get rid of decore_theme if user types none.
+	# Get rid of decore_theme if user types "none".
 	if decor.downcase == "none"
 		designer_hash.delete(:decor_theme)
 	end
 
 	# Print the hash table to screen
-	puts designer_hash
+	puts border_top
+	designer_hash.each {|key, val| puts "#{key} = #{val}"}
+	puts border_bottom
 
 	# Give user opportunity to update answers 
 	puts "Would you like to update any answers? y or no"
@@ -62,10 +70,9 @@ def get_client_info
 	# if the user would like to update answers then run this loop:
 	while answer.downcase == "y" || answer == "yes"  
 		puts "Enter the field you would like to change:"
-		designer_hash.keys.each do |i|
-			# Print each key to screen so that user knows options to change
-			puts i.to_s
-		end
+		# Print each key to screen so that user knows options to change
+		designer_hash.keys.each {|i| puts i.to_s}
+
 
 		# Take user input, convert it to a symbol and store it in key_to_change variable
 		key_to_change = gets.chomp.to_sym
@@ -78,31 +85,29 @@ def get_client_info
 			designer_hash[key_to_change] = new_value
 		else
 			# If key does not exist in hash, ask user if he/she would like to add it.
-			puts "Hash does not have key, would you like to add this field?"
-			if gets.chomp.downcase == "y" || gets.chomp.downcase == "yes"
+			puts "Key doesn't exist. Would you like to add it?"
+			add_key = gets.chomp.downcase
+			while  add_key == "y" || add_key == "yes"
 				# Ask user for value of new field.
 				puts "What is the value of this field"
 				new_value = gets.chomp
 				# Assign value to new field
 				designer_hash[key_to_change] = new_value
+				add_key = "no"
 			end
-
+			
 		end
-
-		puts ""
-		# Print new designer_hash to screen.
-		puts designer_hash
-		puts""
 
 		# Ask user if he/she want to update any more fileds.
 		#  If answer is no, then loop will exit.
 		puts "Would you like to update any more answers? y or n"
 		answer = gets.chomp.downcase
 
-
 	end
-
-	puts designer_hash
+	
+	puts border_top
+	designer_hash.each {|key, val| puts "#{key} = #{val}"}
+	puts border_bottom
 	
 
 end #get_client_info
