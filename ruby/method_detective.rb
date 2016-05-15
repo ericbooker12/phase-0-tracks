@@ -11,7 +11,10 @@ puts "iNvEsTiGaTiOn".swapcase!
 puts ""
 puts "zom".insert(2, 'o')
 
+<<<<<<< HEAD
 # Alternate strategy
+=======
+>>>>>>> 18fd016212fa8ddf0933363e5fd1285cfae97d82
 o_word = "zom"
 o_pos = o_word.index('o')
 puts "zom".insert(o_pos + 1, o_word[o_pos])
