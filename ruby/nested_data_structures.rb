@@ -16,13 +16,22 @@ def cal_brews
 	# The 'beers' key is an array of beers that the brewery sells
 	
 	california_breweries = [
-		brewery1 = {
+		brewery0 = {
 			'name' => '21st Ammendment',
 			'city' => 'San Francisco',
 			'beers' => [
 				'Down To Earth', 
 				'Brew Free! or Die', 
 				'Back in Black'
+			]
+		},
+		brewery1 = {
+			'name' => 'Stumptown',
+			'city' => 'Guerneville',
+			'beers' => [
+				'Rat Bastard', 
+				'Bushwacker', 
+				'Donkey Punch'
 			]
 		},
 		brewery2 = {
@@ -83,7 +92,7 @@ def cal_brews
 			'name' => 'Highway 1',
 			'city' => 'Pescadero',
 			'beers' => [
-				'Amberdexterous', 
+				'AmberDexterous', 
 				'Pepper in the Rye'
 			]
 		},
@@ -101,32 +110,40 @@ def cal_brews
 			'city' => 'Petaluma',
 			'beers' => [
 				'Little Sumpin', 
-				'Daytime', 
+				'Daytime IPA', 
 				'Hairy Eyeball'
-			]
-		},
-		brewery11 = {
-			'name' => 'Stumptown',
-			'city' => 'Guerneville',
-			'beers' => [
-				'Rat Bastard', 
-				'Bushwacker', 
-				'Donkey Punch'
 			]
 		}
 	]
 
-	puts "Brewery Locations:"
-	california_breweries.each {|i| puts i['name'] + ", " + i['city']}
+	puts "The name of brewery 5 is: #{california_breweries[5]['name']}"
+	puts "The beers at brewery 5 are: #{california_breweries[5]['beers']}"
+	puts "The beers at brewery 8 are: #{california_breweries[8]['beers']}"
 
-	puts ""
+	# Change the index to get info from a different brewery
+	index = 0
+	puts "\nThe brewery at index #{index} is called #{california_breweries[index]['name']} and is located in #{california_breweries[index]['city']}."
+	puts "They serve:" 
+	california_breweries[index]['beers'].each {|i| puts "\t\t" + i}
+	
 
+	# puts "Brewery Locations:"
+	# california_breweries.each {|i| puts i['name'] + ", " + i["city"]}
+
+	puts "---------------------------------------------------------------------------------"
 	puts "Beer List by Brewery:"
 	california_breweries.each do |i| 
 		puts "#{i['name']}:"
 		i['beers'].each {|x| puts "\t#{x}"}
-		puts ""
 	end
+
+	# puts "----------------------------------------------------------"
+	# puts "Beer List by City:"
+	# california_breweries.each do |i| 
+	# 	puts "#{i['city']}:"
+	# 	i['beers'].each {|x| puts "\t#{x}"}
+	# 	puts "-----------------------------"
+	# end
 
 
 end # cal_brews
