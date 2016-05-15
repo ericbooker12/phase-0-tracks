@@ -11,7 +11,7 @@
 # 4. Store key/value pair in a hash table. 
 
 
-def get_client_info
+def get_client_info  
 
 	# Create borders to put around printed data.
 	border = "----------------------------------"
