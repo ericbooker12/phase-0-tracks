@@ -1,11 +1,9 @@
 
 =begin
-Construct a state (Calfornia)
-1. Create a hash called california_breweries.
-2. Add names of breweries to hash as keys.
-3. Populate the keys with names of beers sold by the breweries.
-	- names of beers will be in arrays.
-4. Add a key with the name of the city of the brewery.
+1. Construct an array of breweries in California
+2. Add a hash to each item in the brewery array.
+3. Poulate each hash with name, city, and beers served.
+3. Create 
 =end
 
 def cal_brews
