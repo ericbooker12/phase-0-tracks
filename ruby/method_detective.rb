@@ -11,10 +11,9 @@ puts "iNvEsTiGaTiOn".swapcase!
 puts ""
 puts "zom".insert(2, 'o')
 
-<<<<<<< HEAD
+
 # Alternate strategy
-=======
->>>>>>> 18fd016212fa8ddf0933363e5fd1285cfae97d82
+
 o_word = "zom"
 o_pos = o_word.index('o')
 puts "zom".insert(o_pos + 1, o_word[o_pos])
@@ -44,7 +43,9 @@ puts "The case of the disappearing last letter".chop
 
 puts ""
 puts "The mystery of the missing first letter".delete('T')
+# puts "The mystery of the missing first letter".split('').shift.join('')
 
+puts ""
 # Alternate strategies
 phrase = "The mystery of the missing first letter"
 puts phrase.slice(1, phrase.length - 1)
