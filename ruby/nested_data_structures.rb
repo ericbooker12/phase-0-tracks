@@ -116,17 +116,22 @@ def cal_brews
 		}
 	]
 
-	# puts california_breweries['Stumptown'][1]
-	# puts california_breweries['Bear Republic'].last
-	# puts california_breweries['Bear Republic'].first
+	puts "Brewery Locations:"
+	california_breweries.each {|i| puts i['name'] + ", " + i['city']}
+
+	puts ""
+
+	puts "Beer List by Brewery:"
+	california_breweries.each do |i| 
+		puts "#{i['name']}:"
+		i['beers'].each {|x| puts "\t#{x}"}
+		puts ""
+	end
+
 
 end # cal_brews
 
 cal_brews
-
-
-
-
 
 
 
@@ -154,3 +159,6 @@ cal_brews
 # Lagunitas - Petaluma
 # St. Florian - Windsor
 # Stumptown - Guernville
+
+
+
