@@ -10,26 +10,115 @@ Construct a state (Calfornia)
 
 def cal_brews
 
-	# names of breweries :
-	california_breweries = { 
-		'21st Amendment' => ['Down To Earth', 'Brew Free! or Die', 'Back in Black'],
-		'Drakes' => ['1500', 'Hefe', 'Denoginizer'],
-		'Faction' => ['Southern Aroma', 'Faction Pale', 'Faction Imperial Stout'],
-		'Third St. Aleworks' => ['Annadel Pale', 'Puddle Jumper', 'Bombay Rouge'],
-		'Sierra Nevada' => ['Pale Ale', 'Hop Hunter', 'Torpedo'],
-		'Russian River' => ['Redemption', 'Happy Hops', 'Russian River Porter'],
-		'Lost Coast' => ['Downtown Brown', 'Great White', 'Ally Cat'],
-		'Gordon Biersh' => ['Winterbock', 'Pilsner', 'Hefeweizen'],
-		'Hopmonk' => ['Tavern Ale', 'Kellerbier', 'IPA'], 
-		'Mendicino' => ['Red Tail', 'Eye of the Hawk', 'Blue Heron'],
-		'Napa Smith' => ['Amber Ale', 'Bonfire', 'Lost Dog'],
-		'Anchor' => ['Anchor Steam', 'Anchor Lager', 'Anchor Porter'],
-		'Highway 1' => ['Amberdexterous', 'Pepper in the Rye'],
-		'Bear Republic' => ['Racer 5', 'Racer X', 'Red Rocket'],
-		'Lagunitas' => ['Little Sumpin', 'Daytime', 'Hairy Eyeball'],
-		'St. Florian' => ['Brown Ale', 'Flashover'],
-		'Stumptown' => ['Rat Bastard', 'Bushwacker', 'Donkey Punch']
-	}
+	# This is an array of hashes.
+	# The hashes are the names of breweries
+	# The hash keys are 'city' and 'beers'
+	# The 'beers' key is an array of beers that the brewery sells
+	
+	california_breweries = [
+		brewery1 = {
+			'name' => '21st Ammendment',
+			'city' => 'San Francisco',
+			'beers' => [
+				'Down To Earth', 
+				'Brew Free! or Die', 
+				'Back in Black'
+			]
+		},
+		brewery2 = {
+			'name' => 'Drakes',
+			'city' => 'San Leandro',
+			'beers' => [
+				'1500', 
+				'Hefe', 
+				'Denoginizer'
+			]
+		},
+		brewery3 = {
+			'name' => 'Faction',
+			'city' => 'Alameda',
+			'beers' => [
+				'Southern Aroma', 
+				'Faction Pale', 
+				'Faction Imperial Stout'
+			]
+		},
+		brewery4 = {
+			'name' => 'Third St. Aleworks',
+			'city' => 'Santa Rosa',
+			'beers' => [
+				'Annadel Pale', 
+				'Puddle Jumper', 
+				'Bombay Rouge'
+			]
+		},
+		brewery5 = {
+			'name' => 'Sierra Nevada',
+			'city' => 'Chico',
+			'beers' => [
+				'Pale Ale', 
+				'Hop Hunter', 
+				'Torpedo'
+			]
+		},
+		brewery6 = {
+			'name' => 'Russian River',
+			'city' => 'Santa Rosa',
+			'beers' => [
+				'Redemption', 
+				'Happy Hops', 
+				'Russian River Porter'
+			]
+		},
+		brewery7 = {
+			'name' => 'Hopmonk',
+			'city' => 'Sebastopol',
+			'beers' => [
+				'Tavern Ale', 
+				'Kellerbier', 
+				'IPA'
+			]
+		}, 
+		brewery8 = {
+			'name' => 'Highway 1',
+			'city' => 'Pescadero',
+			'beers' => [
+				'Amberdexterous', 
+				'Pepper in the Rye'
+			]
+		},
+		brewery9 = {
+			'name' => 'Bear Republic',
+			'city' => 'Healdsburg',
+			'beers' => [
+				'Racer 5', 
+				'Racer X', 
+				'Red Rocket'
+			]
+		},
+		brewery10 = {
+			'name' => 'Lagunitas',
+			'city' => 'Petaluma',
+			'beers' => [
+				'Little Sumpin', 
+				'Daytime', 
+				'Hairy Eyeball'
+			]
+		},
+		brewery11 = {
+			'name' => 'Stumptown',
+			'city' => 'Guerneville',
+			'beers' => [
+				'Rat Bastard', 
+				'Bushwacker', 
+				'Donkey Punch'
+			]
+		}
+	]
+
+	# puts california_breweries['Stumptown'][1]
+	# puts california_breweries['Bear Republic'].last
+	# puts california_breweries['Bear Republic'].first
 
 end # cal_brews
 
