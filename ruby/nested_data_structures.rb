@@ -2,8 +2,9 @@
 =begin
 1. Construct an array of breweries in California
 2. Add a hash to each item in the brewery array.
-3. Poulate each hash with name, city, and beers served.
-3. Create 
+3. Create hash key for name, city, and beers served.
+4. Add values to name and city keys.
+5. Create array value for beers key and populate the array with different beers.
 =end
 
 def cal_brews
