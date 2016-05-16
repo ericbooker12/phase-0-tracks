@@ -21,8 +21,7 @@ def get_next_vowel(name)
 	# 0 1 2 3 4 5 6 7 8 9
 
 	vowel_list = "aeiouAEIOU"
-	# name = "Eric Booker uuuuUUUU"
-	name_array = name.split('')\
+	name_array = name.split('')
 
 	index = 0
 	# parse through each letter in name_array
@@ -60,7 +59,7 @@ def get_next_vowel(name)
 end
 
 def get_next_consonant(name)
-	puts "\nget_next_consonant method:"
+
 	# consonant key: 
 	# b c d f g h j k l m n  p  q  r  s  t  v  w  x  y  z 
     # 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
@@ -69,7 +68,6 @@ def get_next_consonant(name)
 	# 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41
 
 	consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
-	name_array = name.split('')
 
 	index = 0 # set index to 0 so that we have the index of the letter in each iteration
 	name.split('').each do |letter| 
@@ -83,7 +81,7 @@ def get_next_consonant(name)
 			elsif cons_index == 41
 				next_letter_index = 21
 			else
-			letter_index = consonants.index(letter)
+				letter_index = consonants.index(letter)
 				letter_next_index = letter_index + 1 
 			end
 			name[index] = consonants[letter_next_index]
@@ -93,15 +91,15 @@ def get_next_consonant(name)
    	return name
 end
 
+
 name = "Eric Booker"
 puts "The original name is #{name}"
 swapped_name = swap_name(name)
-puts "The first and last name swapped is #{swapped_name}"
+puts "The first and last name swapped is: #{swapped_name}"
 replaced_vowels = get_next_vowel(swapped_name)
-puts replaced_vowels
-
-p get_next_consonant("Eric Booker")
-
+puts "The name with the vowels replaced is #{replaced_vowels}"
+replaced_consonants = get_next_consonant(replaced_vowels)
+puts "The name with the consonants replaced is #{replaced_consonants}"
 
 
 
