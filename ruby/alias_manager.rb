@@ -10,8 +10,8 @@ Pseudocode for alias_manager
 =end
 
 def create_alias(name)
-
-	# p "Original name: #{name}"
+	original_name = name
+	# p "Original name: #{original_name}"
 
 	if name.include?(' ') # don't swap names if only one word
 		name_array = name.split(" ")
@@ -94,27 +94,28 @@ def create_alias(name)
 		index += 1
 	end
 	
-
 	# p "With consonants replaced: #{name}"
-   	name
-end
 
-def add_user_input
+	alias_name = name #return alias name
+end 
+
+def process_names
+	names_hash = {} # create a hash to store original and alias names.
 	print "Enter your name: "
 	name = gets.chomp
 	
 	while name != "quit" && name != "exit" 
-		puts "#{name}'s alias is #{create_alias(name)}"
-		print "Enter another name: "
+		names_hash[name] = create_alias(name) # Store original and alias names in hash
+		# puts "#{name}'s alias is #{create_alias(name)}\n\n"
+		print "Enter another name or type exit: "
 		name = gets.chomp
 	end
-	puts "Good bye!"
+
+	# Print the names from the hash
+	puts "\n" #creat a blank line 
+	names_hash.each {|original_name, alias_name| p "#{alias_name} is also known as #{original_name}"}
 end
 
-add_user_input
-
-# name = "Eric Booker"
-# p create_alias(name)
-
+process_names
 
 
