@@ -31,7 +31,7 @@ def get_next_vowel
 		# Check to see if it is in vowel_list
 		if vowel_list.include?(letter) 
 
-			# if letter is in vowel_list then set it to the next letter in the list.
+			# if letter is in vowel_list then store it in vowel_letter.
 			vowel_letter = name_array[index]
 
 			# get the index of the letter in vowel_list and store it in vowel_index
