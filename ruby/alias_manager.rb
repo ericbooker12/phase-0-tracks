@@ -10,13 +10,16 @@ Pseudocode for alias_manager
 =end
 
 def create_alias(name)
-	p "Original name: #{name}"
 
-	name_array = name.split(" ")
-	swapped_name = name_array[1] + " " + name_array[0]
-	name = swapped_name # name is now the second iteration of name, first and last are swapped
+	# p "Original name: #{name}"
+
+	if name.include?(' ') # don't swap names if only one word
+		name_array = name.split(" ")
+		swapped_name = name_array[1] + " " + name_array[0]
+		name = swapped_name # name is now the second iteration of name, first and last are swapped
+	end
 	
-	p "After name swap: #{name}"
+	# p "After name swap: #{name}"
 
 	# vowel key:      
 	# a e i o u A E I O U               
@@ -57,7 +60,7 @@ def create_alias(name)
 		index += 1
 	end
 	
-	p "With vowels replaced: #{name}"
+	# p "With vowels replaced: #{name}"
 	
 	# consonant key: 
 	# b c d f g h j k l m n  p  q  r  s  t  v  w  x  y  z 
@@ -90,15 +93,28 @@ def create_alias(name)
 		end
 		index += 1
 	end
+	
 
-	p "With consonants replaced: #{name}"
-   	return name
+	# p "With consonants replaced: #{name}"
+   	name
 end
 
+def add_user_input
+	print "Enter your name: "
+	name = gets.chomp
+	
+	while name != "quit" && name != "exit" 
+		puts "#{name}'s alias is #{create_alias(name)}"
+		print "Enter another name: "
+		name = gets.chomp
+	end
+	puts "Good bye!"
+end
 
-p create_alias("Eryn Supple")
+add_user_input
 
-
+# name = "Eric Booker"
+# p create_alias(name)
 
 
 
