@@ -15,38 +15,22 @@ def swap_name(name)
 	
 end
 
-def get_next_vowel
+def get_next_vowel(name)
 	# vowel key:      
 	# a e i o u A E I O U               
 	# 0 1 2 3 4 5 6 7 8 9
 
 	vowel_list = "aeiouAEIOU"
-<<<<<<< HEAD
-	vowel_list_array = vowel_list.split('')
-	p vowel_list_array
-	name = "Eric Booker uuuuUUUU"
-	name_array = name.split('')
-=======
-	name = "Eric Booker uuuuUUUU"
-	name_array = name.split("")
->>>>>>> bb2867ec7d6eefe693ee5d52723dd5c8931cf3d6
-	puts name
+	# name = "Eric Booker uuuuUUUU"
+	name_array = name.split('')\
 
 	index = 0
 	# parse through each letter in name_array
-<<<<<<< HEAD
 	name_array.each  do |letter_in_name|
 		# Check to see if it is in vowel_list
-		if vowel_list_array.include?(letter_in_name) 
-
-			# if letter is in vowel_list then store it in vowel_letter.
-=======
-	name_array.each  do |letter|
-		# Check to see if it is in vowel_list
-		if vowel_list.include?(letter) 
+		if vowel_list.include?(letter_in_name) 
 
 			# if letter is in vowel_list then set it to the next letter in the list.
->>>>>>> bb2867ec7d6eefe693ee5d52723dd5c8931cf3d6
 			vowel_letter = name_array[index]
 
 			# get the index of the letter in vowel_list and store it in vowel_index
@@ -69,24 +53,57 @@ def get_next_vowel
 
 			# replace vowels in name with next_letter
 			name[index] = next_letter
-<<<<<<< HEAD
-			
-=======
->>>>>>> bb2867ec7d6eefe693ee5d52723dd5c8931cf3d6
-
 		end
 		index += 1
 	end
-	puts name
+	return name
 end
 
-def get_next_consonant
+def get_next_consonant(name)
+	puts "\nget_next_consonant method:"
 	# consonant key: 
 	# b c d f g h j k l m n  p  q  r  s  t  v  w  x  y  z 
     # 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
 
 	# B  C  D  F  G  H  J  K  L  M  N  P  Q  R  S  T  V  W  X  Y  Z
 	# 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41
+
+	consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
+	name_array = name.split('')
+
+	index = 0 # set index to 0 so that we have the index of the letter in each iteration
+	name.split('').each do |letter| 
+
+		if consonants.include?(letter)
+			cons_index = consonants.index(name[index])
+
+			# handle edge cases
+			if cons_index == 20
+				next_letter_index = 0
+			elsif cons_index == 41
+				next_letter_index = 21
+			else
+			letter_index = consonants.index(letter)
+				letter_next_index = letter_index + 1 
+			end
+			name[index] = consonants[letter_next_index]
+		end
+		index += 1
+	end
+   	return name
 end
 
-get_next_vowel
+name = "Eric Booker"
+puts "The original name is #{name}"
+swapped_name = swap_name(name)
+puts "The first and last name swapped is #{swapped_name}"
+replaced_vowels = get_next_vowel(swapped_name)
+puts replaced_vowels
+
+p get_next_consonant("Eric Booker")
+
+
+
+
+
+
