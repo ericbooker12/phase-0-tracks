@@ -9,7 +9,7 @@ Pseudocode for alias_manager
 	- figure out how to find only consonants in a string.
 =end
 
-def swap_name(name)
+def create_alias(name)
 	p "Original name: #{name}"
 
 	name_array = name.split(" ")
@@ -17,9 +17,7 @@ def swap_name(name)
 	name = swapped_name # name is now the second iteration of name, first and last are swapped
 	
 	p "After name swap: #{name}"
-# end
 
-# def get_next_vowel(name)
 	# vowel key:      
 	# a e i o u A E I O U               
 	# 0 1 2 3 4 5 6 7 8 9
@@ -61,10 +59,6 @@ def swap_name(name)
 	
 	p "With vowels replaced: #{name}"
 	
-# end
-
-# def get_next_consonant(name)
-
 	# consonant key: 
 	# b c d f g h j k l m n  p  q  r  s  t  v  w  x  y  z 
     # 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
@@ -85,11 +79,14 @@ def swap_name(name)
 				next_letter_index = 0
 			elsif cons_index == 41
 				next_letter_index = 21
+
+			# handle the rest of the cases
 			else
 				letter_index = consonants.index(letter)
-				letter_next_index = letter_index + 1 
+				next_letter_index = letter_index + 1 
 			end
-			name[index] = consonants[letter_next_index]
+			# next_letter = vowel_list[next_letter_index]
+			name[index] = consonants[next_letter_index]
 		end
 		index += 1
 	end
@@ -99,7 +96,7 @@ def swap_name(name)
 end
 
 
-swap_name("Felicia Torres")
+p create_alias("Eryn Supple")
 
 
 
