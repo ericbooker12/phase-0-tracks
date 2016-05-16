@@ -10,27 +10,30 @@ Pseudocode for alias_manager
 =end
 
 def swap_name(name)
+	p "Original name: #{name}"
+
 	name_array = name.split(" ")
 	swapped_name = name_array[1] + " " + name_array[0]
+	name = swapped_name # name is now the second iteration of name, first and last are swapped
 	
-end
+	p "After name swap: #{name}"
+# end
 
-def get_next_vowel(name)
+# def get_next_vowel(name)
 	# vowel key:      
 	# a e i o u A E I O U               
 	# 0 1 2 3 4 5 6 7 8 9
 
 	vowel_list = "aeiouAEIOU"
-	name_array = name.split('')
 
 	index = 0
 	# parse through each letter in name_array
-	name_array.each  do |letter_in_name|
+	name.split('').each  do |letter_in_name| # name string is converted to an array
 		# Check to see if it is in vowel_list
 		if vowel_list.include?(letter_in_name) 
 
 			# if letter is in vowel_list then set it to the next letter in the list.
-			vowel_letter = name_array[index]
+			vowel_letter = name[index]
 
 			# get the index of the letter in vowel_list and store it in vowel_index
 			vowel_index = vowel_list.index(vowel_letter)
@@ -55,10 +58,12 @@ def get_next_vowel(name)
 		end
 		index += 1
 	end
-	return name
-end
+	
+	p "With vowels replaced: #{name}"
+	
+# end
 
-def get_next_consonant(name)
+# def get_next_consonant(name)
 
 	# consonant key: 
 	# b c d f g h j k l m n  p  q  r  s  t  v  w  x  y  z 
@@ -70,7 +75,7 @@ def get_next_consonant(name)
 	consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
 
 	index = 0 # set index to 0 so that we have the index of the letter in each iteration
-	name.split('').each do |letter| 
+	name.split('').each do |letter| # name string is converted to array
 
 		if consonants.include?(letter)
 			cons_index = consonants.index(name[index])
@@ -88,18 +93,13 @@ def get_next_consonant(name)
 		end
 		index += 1
 	end
+
+	p "With consonants replaced: #{name}"
    	return name
 end
 
 
-name = "Eric Booker"
-puts "The original name is #{name}"
-swapped_name = swap_name(name)
-puts "The first and last name swapped is: #{swapped_name}"
-replaced_vowels = get_next_vowel(swapped_name)
-puts "The name with the vowels replaced is #{replaced_vowels}"
-replaced_consonants = get_next_consonant(replaced_vowels)
-puts "The name with the consonants replaced is #{replaced_consonants}"
+swap_name("Felicia Torres")
 
 
 
