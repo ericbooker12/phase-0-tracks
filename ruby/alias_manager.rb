@@ -21,15 +21,17 @@ def get_next_vowel
 	# 0 1 2 3 4 5 6 7 8 9
 
 	vowel_list = "aeiouAEIOU"
+	vowel_list_array = vowel_list.split('')
+	p vowel_list_array
 	name = "Eric Booker uuuuUUUU"
-	name_array = name.split("")
+	name_array = name.split('')
 	puts name
 
 	index = 0
 	# parse through each letter in name_array
-	name_array.each  do |letter|
+	name_array.each  do |letter_in_name|
 		# Check to see if it is in vowel_list
-		if vowel_list.include?(letter) 
+		if vowel_list_array.include?(letter_in_name) 
 
 			# if letter is in vowel_list then store it in vowel_letter.
 			vowel_letter = name_array[index]
@@ -54,6 +56,7 @@ def get_next_vowel
 
 			# replace vowels in name with next_letter
 			name[index] = next_letter
+			
 
 		end
 		index += 1
