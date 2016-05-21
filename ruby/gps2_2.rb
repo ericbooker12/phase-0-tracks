@@ -19,6 +19,8 @@ def create_list(input_string)
     add_item_to_list(grocery_list, item, 1)
   end
 
+  print_list(grocery_list)
+
   add_item_to_list(grocery_list, "milk", 1)
   update_item_from_list(grocery_list, "Lemonade", 2)
   update_item_from_list(grocery_list, "Tomatoes", 3)
@@ -26,6 +28,11 @@ def create_list(input_string)
   update_item_from_list(grocery_list, "iceCream", 20)
 
   print_list(grocery_list)
+
+  remove_item_from_list(grocery_list, "iceCream")
+
+  print_list(grocery_list)
+
 end
   
 # Method to add an item to a list
@@ -46,7 +53,7 @@ def remove_item_from_list(hash, item_to_remove)
   if hash.has_key?(item_to_remove)
     hash.delete(item_to_remove)
   else
-    "It looks like #{item_to_remove} wasn't in the hash after all!"
+    puts "It looks like #{item_to_remove} wasn't in the hash after all!"
   end
 end
 
@@ -70,6 +77,7 @@ end
 # output: prettyfied hash is printed to screen
 
 def print_list(hash)
+	puts "" 
   hash.each do |item, qty|
     puts "#{item}: #{qty}\n"
   end
