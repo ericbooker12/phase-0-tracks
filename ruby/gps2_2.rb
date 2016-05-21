@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-# gps 2.2
-=======
+
 # gps 2.2
 # coder pad https://coderpad.io/WHCEDWME
 
@@ -78,4 +76,3 @@ def print_list(hash)
 end
 
 create_list('Lemonade Tomatoes Onions iceCream')
->>>>>>> gps2-2
