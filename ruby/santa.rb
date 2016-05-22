@@ -2,9 +2,10 @@ class Santa
 
 	def initialize(gender, ethnicity)
 		puts "Initializing Santa instance..."
-		@gender = gender
+		# following 2 lines gives state
+		@gender = gender  # @ symbol gives access to this variable from other methods 
 		@ethnicity = ethnicity
-		puts "Santa is a #{@gender} #{@ethnicity}"
+		puts "Santa is #{@gender} #{@ethnicity}"
 	end
 
 	def reindeer
@@ -35,9 +36,22 @@ class Santa
 
 end
 
-santa = Santa.new("male", "Canadian")
+santas = []
+santas << Santa.new("agender", "black")
+santas << Santa.new("female", "Latino")
+santas << Santa.new("bigender", "white")
+santas << Santa.new("male", "Japanese")
+santas << Santa.new("female", "prefer not to say")
+santas << Santa.new("gender fluid", "Mystical creature (unicorn)")
+santas << Santa.new("N/A", "N/A")
 
-santa.speak
-santa.eat_milk_and_cookies("oreo")
+
+# santa = Santa.new("male", "Canadian")
+# santa.speak
+# santa.eat_milk_and_cookies("oreo")
+
+# santa = Santa.new("female", "Mexico")
+# santa.speak
+# santa.eat_milk_and_cookies("hydrox")
 
 
