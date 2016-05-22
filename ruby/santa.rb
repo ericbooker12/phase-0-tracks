@@ -1,4 +1,6 @@
 class Santa
+	attr_accessor :gender, :reindeer_ranking, :ethnicity
+	
 
 	def initialize(gender, ethnicity)
 		puts "Initializing Santa instance..."
@@ -8,7 +10,8 @@ class Santa
 		puts "Santa is #{@gender} #{@ethnicity}"
 	end
 
-	@@reindeer_ranking = [
+	def santas_deer
+		@reindeer_ranking = [
 			"Rudolph",
 			"Dasher", 
 			"Dancer", 
@@ -20,19 +23,39 @@ class Santa
 			"Blitzen"
 		]
 
-	def reindeer_ranking
-		@@reindeer_ranking
+	end
+
+	def santas_age
+		@age
+	end
+
+	def celibrate_birthday
+		new_age = santas_age
+		if new_age == nil
+			new_age = 0
+		end
+		puts "Santas age: #{age}"
+
+		new_age += 1
+		age = new_age	
+		puts "The final age is #{age}"
+		
+		# puts "Santas age after his birthday is #{age}"
+		
 	end
 
 	def get_mad_at(reindeer_name)
 		puts "Santa is mad at #{reindeer_name}"
-		@@reindeer_ranking.delete(reindeer_name) # delete name from array
-		@@reindeer_ranking.push(reindeer_name)	# add it back to the end, can probably combine these into one line
+		new_array = santas_deer
+		# puts "new array: #{new_array}"
+		new_array.delete(reindeer_name) # delete name from array
+		# puts "new array: #{new_array}"
+		new_array << reindeer_name # add it back to the end, can probably combine these into one line
+		# puts "new array: #{new_array}"
+
+		reindeer_ranking = new_array
 
 	end
-
-
-	@@age = 0
 
 	def speak
 		puts "Ho, ho, ho! Haaaapy holidays!"
@@ -42,30 +65,39 @@ class Santa
 		puts "That was a good #{cookie} cookie."
 	end
 
-	def celibrate_birthday
-		@@age += 1
-	end
+	
 
 	#----------GETERS AND SETTERS---------
+	
+
+	# the following getter and setter methods are commented out because attr_reader and attr_accesor was used above
+
+	# def reindeer_ranking
+	# 	@@reindeer_ranking
+	# end
 
 	# age getter method
 	def age
-		@@age
+		@age
 	end
 
 	# ethnicity getter method
-	def ethnicity
-		@ethnicity
-	end
+	# def ethnicity
+	# 	@ethnicity
+	# end
 
 	# gender setter method
-	def gender
-		@gender
-	end
+	# def gender
+	# 	@gender
+	# end
 
-	# gender setter method
-	def gender=(new_gender)
-		@gender = new_gender
+	# # gender setter method
+	# def gender=(new_gender)
+	# 	@gender = new_gender
+	# end
+
+	def age=(new_age)
+		@age = new_age
 	end
 	
 
@@ -77,24 +109,33 @@ cookies = ["Oreo", "chips ahoy", "hydrox", "Joe-joes", "Snickerdoodle", "Oatmeal
 santas = []
 
 santa = Santa.new("male", "Canadian")
-print "Santa says: #{santa.speak}"
-santa.eat_milk_and_cookies("oreo")
-puts "Santas age is #{santa.age}"
-santa.celibrate_birthday
-puts "Santas age is #{santa.age}"
+# print "Santa says: #{santa.speak}"
+# santa.eat_milk_and_cookies("oreo")
+
+# puts santa.reindeer_ranking
 
 birthdays = 60
 count = 0
-while count < birthdays
-	santa.celibrate_birthday
-	count += 1
-end
+# puts santa.santas_age
+# while count < birthdays
+# 	santa.celibrate_birthday
+# 	count += 1
+# end
+
+santa.celibrate_birthday
+puts "-----"
+santa.celibrate_birthday
 
 puts "Santa had #{birthdays} birthdays and is now #{santa.age} years old."
-puts ""
-puts santa.age
-puts santa.ethnicity
-puts santa.gender
+# puts ""
+# puts santa.age
+# puts santa.ethnicity
+
+puts "Santa's gender is #{santa.gender}."
+santa.gender = "female"
+
+puts "Santa's new gender is #{santa.gender}."
+
 
 # puts ""
 # santa.get_mad_at("Vixen")
