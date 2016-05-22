@@ -29,7 +29,7 @@ def create_list(input_string)
 
   print_list(grocery_list)
 
-  remove_item_from_list(grocery_list, "iceCream")
+  remove_item_from_list(grocery_list, "IceCream")
 
   print_list(grocery_list)
 
