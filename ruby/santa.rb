@@ -1,5 +1,7 @@
 class Santa
-	attr_accessor :gender, :reindeer_ranking, :ethnicity
+	@age = 0
+	
+	attr_accessor :gender, :reindeer_ranking, :ethnicity, :age
 	
 
 	def initialize(gender, ethnicity)
@@ -25,24 +27,18 @@ class Santa
 
 	end
 
-	def santas_age
-		@age
-	end
-
-	def celibrate_birthday
-		new_age = santas_age
-		if new_age == nil
-			new_age = 0
-		end
-		puts "Santas age: #{age}"
-
-		new_age += 1
-		age = new_age	
-		puts "The final age is #{age}"
+	# def age(age=0)
+	# 	@@age = age
+	# 	# puts "Santas age is #{@age}"
 		
-		# puts "Santas age after his birthday is #{age}"
-		
-	end
+
+	# end
+
+	def celebrate_birthday
+    	@age = @age.to_i + 1
+    	# puts "new age = #{@age}"
+    	# age = @age
+  	end
 
 	def get_mad_at(reindeer_name)
 		puts "Santa is mad at #{reindeer_name}"
@@ -77,9 +73,9 @@ class Santa
 	# end
 
 	# age getter method
-	def age
-		@age
-	end
+	# def age
+	# 	@age
+	# end
 
 	# ethnicity getter method
 	# def ethnicity
@@ -96,9 +92,9 @@ class Santa
 	# 	@gender = new_gender
 	# end
 
-	def age=(new_age)
-		@age = new_age
-	end
+	# def age=(new_age)
+	# 	@age = new_age
+	# end
 	
 
 end # end of Santa class
@@ -109,6 +105,8 @@ cookies = ["Oreo", "chips ahoy", "hydrox", "Joe-joes", "Snickerdoodle", "Oatmeal
 santas = []
 
 santa = Santa.new("male", "Canadian")
+puts santa.age
+santa.celebrate_birthday
 # print "Santa says: #{santa.speak}"
 # santa.eat_milk_and_cookies("oreo")
 
@@ -116,15 +114,13 @@ santa = Santa.new("male", "Canadian")
 
 birthdays = 60
 count = 0
-# puts santa.santas_age
-# while count < birthdays
-# 	santa.celibrate_birthday
-# 	count += 1
-# end
+puts santa.age
+while count < birthdays
+	santa.celebrate_birthday
+	count += 1
+end
 
-santa.celibrate_birthday
-puts "-----"
-santa.celibrate_birthday
+puts santa.age
 
 puts "Santa had #{birthdays} birthdays and is now #{santa.age} years old."
 # puts ""
@@ -137,10 +133,10 @@ santa.gender = "female"
 puts "Santa's new gender is #{santa.gender}."
 
 
-# puts ""
-# santa.get_mad_at("Vixen")
-# puts santa.reindeer_ranking
-# puts "------"
+puts ""
+santa.get_mad_at("Vixen")
+puts santa.reindeer_ranking
+puts "------"
 # santa.get_mad_at("Rudolph")
 # puts santa.reindeer_ranking
 # puts "------"
