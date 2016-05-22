@@ -36,14 +36,45 @@ class Santa
 
 end
 
+genders = ["agender", "female", "bigender", "male", "gender fluid", "N/A"]
+ethnicities = ["black", "latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature", "N/A"]
 santas = []
-santas << Santa.new("agender", "black")
-santas << Santa.new("female", "Latino")
-santas << Santa.new("bigender", "white")
-santas << Santa.new("male", "Japanese")
-santas << Santa.new("female", "prefer not to say")
-santas << Santa.new("gender fluid", "Mystical creature (unicorn)")
-santas << Santa.new("N/A", "N/A")
+
+genders.length.times do |i|
+	santas << Santa.new(genders[i], ethnicities[i])
+end
+
+puts "---------------------------------------------"
+
+genders.each do |gender|
+	santas << Santa.new(gender, "japanese")
+end
+
+puts "---------------------------------------------"
+
+count = 0
+ethnicities.each do |ethnicity|
+	santas << Santa.new(genders[count], ethnicity)
+	count += 1
+end
+
+puts "---------------------------------------------"
+
+count = 0
+length = genders.length
+while count < length
+	santas << Santa.new(genders[count], ethnicities[count])
+	count += 1
+end
+
+
+# santas << Santa.new("agender", "black")
+# santas << Santa.new("female", "Latino")
+# santas << Santa.new("bigender", "white")
+# santas << Santa.new("male", "Japanese")
+# santas << Santa.new("female", "prefer not to say")
+# santas << Santa.new("gender fluid", "Mystical creature (unicorn)")
+# santas << Santa.new("N/A", "N/A")
 
 
 # santa = Santa.new("male", "Canadian")
