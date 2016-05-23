@@ -1,0 +1,20 @@
+1. Data structures are able to store multiple data that are connected to each other. They can be used to make sense of real life objects.
+
+2. An array is a container that holds objects. You can access items in an array by their index.
+
+3. An array might be used to store the names of objects found in a wallet.
+	i.e. wallet_array = [cash, credit_cards, photos, gum]
+
+4. A hash is a container that holds linked pairs (keys and values). Each key is linked to a value.
+
+5. A hash can be used to store names of people and the typ of car they drive.
+	i.e. peoples_cars {joe => truck, sally => a_red_one, fred => ford}
+
+6. Iteration makes it easy to go through each item of an array or hash and apply an action to it.
+
+7. Iteration would be useful if you wanted to paint all the cars red.
+	i.e. for each car in the car array, paint it red.
+
+8. A block is a piece of code that that has one or more parameters and an action that works on that parameter. They are usually used to iterate through a container.
+
+9. A block parameter is a variable chosen at write time the represents the object in the current iteration.

@@ -199,7 +199,7 @@ end
 puts bikes_to_ride
 puts "Which bike would you like to ride? You can only ride one."
 puts "Choose 1 - #{bike_num}"
-selection = gets.chomp.to_i - 1
+selection = gets.chomp.to_i
 
 puts "What would you like to do? or press."
 
@@ -208,7 +208,6 @@ actions = {1 => "Go",2 =>"Change gears",3 => "Go faster",4 => "Stop"}
 actions.each do |index, action|
 	puts "#{index}. #{action}"
 end
-
 index = gets.chomp.to_i
 
 puts ""
@@ -217,7 +216,7 @@ while index != "q"
 	if index == 1
 		bikes[selection].make_bike_go
 	elsif index == 2
-		puts "Choose a gear from 1 to 10"
+		puts "choose a gear from 1 to 10"
 		gear = gets.chomp.to_i
 		bikes[selection].change_gears(gear)
 	elsif index == 3
