@@ -1,15 +1,17 @@
 class Santa
-	@age = 0
+	
 	
 	attr_accessor :gender, :reindeer_ranking, :ethnicity, :age
-	
+
+	def age(age = 0)
+		@age.to_i
+	end
 
 	def initialize(gender, ethnicity)
 		puts "Initializing Santa instance..."
 		# following 2 lines gives state
 		@gender = gender  # @ symbol gives access to this variable from other methods 
 		@ethnicity = ethnicity
-		puts "Santa is #{@gender} #{@ethnicity}"
 	end
 
 	def santas_deer
@@ -27,46 +29,33 @@ class Santa
 
 	end
 
-	# def age(age=0)
-	# 	@@age = age
-	# 	# puts "Santas age is #{@age}"
-		
-
-	# end
-
 	def celebrate_birthday
     	@age = @age.to_i + 1
-    	# puts "new age = #{@age}"
-    	# age = @age
   	end
 
 	def get_mad_at(reindeer_name)
 		puts "Santa is mad at #{reindeer_name}"
 		new_array = santas_deer
-		# puts "new array: #{new_array}"
 		new_array.delete(reindeer_name) # delete name from array
-		# puts "new array: #{new_array}"
 		new_array << reindeer_name # add it back to the end, can probably combine these into one line
-		# puts "new array: #{new_array}"
-
 		reindeer_ranking = new_array
 
 	end
 
 	def speak
-		puts "Ho, ho, ho! Haaaapy holidays!"
+		"Ho, ho, ho! Haaaapy holidays!"
 	end
 
 	def eat_milk_and_cookies(cookie)
-		puts "That was a good #{cookie} cookie."
+		"That was a good #{cookie} cookie."
 	end
 
 	
 
 	#----------GETERS AND SETTERS---------
-	
 
-	# the following getter and setter methods are commented out because attr_reader and attr_accesor was used above
+	# the following getter and setter methods are commented out 
+	# because attr_reader and attr_accesor are used above
 
 	# def reindeer_ranking
 	# 	@@reindeer_ranking
@@ -99,53 +88,96 @@ class Santa
 
 end # end of Santa class
 
-genders = ["agender", "female", "bigender", "male", "gender fluid", "N/A"]
-ethnicities = ["black", "latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature", "N/A"]
-cookies = ["Oreo", "chips ahoy", "hydrox", "Joe-joes", "Snickerdoodle", "Oatmeal", "sugar"]
-santas = []
+# -----------DRIVER CODE------------
 
-santa = Santa.new("male", "Canadian")
-puts santa.age
-santa.celebrate_birthday
-# print "Santa says: #{santa.speak}"
-# santa.eat_milk_and_cookies("oreo")
-
-# puts santa.reindeer_ranking
-
-birthdays = 60
-count = 0
-puts santa.age
-while count < birthdays
-	santa.celebrate_birthday
-	count += 1
+# utilize celebrate_birthday method multiple times
+def make_santa_older(santa, years)
+	birthdays = years
+	count = 0
+	while count < birthdays
+		santa.celebrate_birthday
+		count += 1
+	end
+	puts "After #{birthdays} birthdays, Santa is #{santa.age} years old."
 end
 
-puts santa.age
+# Create an array of Santa instances
+def create_santas(how_many)
+	lots_of_santas = []
+	how_many_santas = how_many
+	count = 0
+	while count < how_many_santas
+		print "#{count + 1}. " 
+		lots_of_santas << Santa.new("non-gender", "neutral")
+		count += 1
+	end
+	return lots_of_santas
+end
 
-puts "Santa had #{birthdays} birthdays and is now #{santa.age} years old."
-# puts ""
+# Set random attributes for santa array
+def set_attributes(santas, genders, ethnicities, cookies)
+
+	count = 1
+	santas.each do |santa|
+		
+		# Set random attributes
+		santa.ethnicity = ethnicities[(rand() * ethnicities.length).to_i]
+		santa.age = (rand() * 140).to_i
+		santa.gender = genders[(rand() * genders.length).to_i]
+		rdm_cookie = cookies[(rand() * cookies.length).to_i]
+
+		50.times {print "-"}
+		puts "\n"
+		puts "SANTA NUMBER #{count}:"
+		puts santa.speak
+		puts "Ethnicity: #{santa.ethnicity}"
+		puts "Age: #{santa.age}"
+		puts "Gender: #{santa.gender}"
+		print "Santa says: \'"
+		puts "#{santa.eat_milk_and_cookies(rdm_cookie)}\'"
+		
+		count += 1
+	end
+end
+
+genders = ["agender", "female", "bigender", "male", "gender fluid", "N/A"]
+ethnicities = ["Guatemalan", "American", "Norwegian", "Chilean", 
+	"Canadian", "latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature", "N/A"]
+cookies = ["Oreo", "chips ahoy", "hydrox", "Joe-joes", "Snickerdoodle", "Oatmeal", "sugar", "chocolate-chip"]
+santas = []
+
+# Create your santa array here. Amount of santas is argument.
+santa_array = create_santas(256)
+
+# set random attributes here
+set_attributes(santa_array, genders, ethnicities, cookies)
+
+
+
+#****************************TEST CODE****************************
+# santa = Santa.new("Finnish", "female")
 # puts santa.age
-# puts santa.ethnicity
+# make_santa_older(santa, 60)
+# puts "Santa had #{birthdays} birthdays and is now #{santa.age} years old."
+# # puts ""
+# # puts santa.age
+# # puts santa.ethnicity
 
-puts "Santa's gender is #{santa.gender}."
-santa.gender = "female"
+# puts "Santa's gender is #{santa.gender}."
+# santa.gender = "female"
 
-puts "Santa's new gender is #{santa.gender}."
+# puts "Santa's new gender is #{santa.gender}."
 
 
-puts ""
-santa.get_mad_at("Vixen")
-puts santa.reindeer_ranking
-puts "------"
+# puts ""
+# santa.get_mad_at("Vixen")
+# puts santa.reindeer_ranking
+# puts "------"
 # santa.get_mad_at("Rudolph")
 # puts santa.reindeer_ranking
 # puts "------"
 # santa.get_mad_at("Comet")
 # puts santa.reindeer_ranking
-
-
-
-
 
 # genders.length.times do |i|
 # 	santas << Santa.new(genders[i], ethnicities[i])
