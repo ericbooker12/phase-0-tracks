@@ -208,6 +208,7 @@ actions = {1 => "Go",2 =>"Change gears",3 => "Go faster",4 => "Stop"}
 actions.each do |index, action|
 	puts "#{index}. #{action}"
 end
+
 index = gets.chomp.to_i
 
 puts ""
