@@ -1,6 +1,6 @@
 class Reindeer
-  attr_reader :location
-  attr_accessor :name
+  # attr_reader :location
+  # attr_accessor :name
 
   def initialize(name)
     @name = name
@@ -16,6 +16,23 @@ class Reindeer
     puts "#{@name} landed safely in #{location}."
     @location = location
   end
+
+  # Getter methods for attributes
+  # Makes attributes readable from outside the class
+  def name
+    @name
+  end
+
+  def location
+    @location
+  end
+
+  # Setter methods
+  # Allows attributes to be changed from outside the class
+  def name=(new_name)
+    @name = new_name
+  end
+
 end
 
 reindeer = Reindeer.new("Dasher")
