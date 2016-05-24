@@ -11,7 +11,7 @@ require_relative 'state_data'
 
 class VirusPredictor
   
-  # initialiozes the instance variables with arguments from the class instanciations
+  # initializes the instance variables with arguments from the class instanciations
   def initialize(state_of_origin, population_density, population)
     @state = state_of_origin
     @population = population
@@ -76,8 +76,6 @@ class VirusPredictor
     puts " and will spread across the state in #{speed_of_spread} months.\n\n"
 
   end
-
-
 end
 
 #=======================================================================
@@ -105,8 +103,6 @@ end
 
 # alaska = VirusPredictor.new("Alaska", STATE_DATA["Alaska"][:population_density], STATE_DATA["Alaska"][:population])
 # alaska.virus_effects
-
-
 
 
 #=======================================================================
