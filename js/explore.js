@@ -21,16 +21,15 @@ function reverse(str) {
 
 //------------------DRIVER CODE------------------
 
-console.log(reverse("Hello my name is Eric"));
-console.log();
+console.log(reverse("Hello my name is Eric") + "\n");
+// console.log();
 
 var notAPalindrome = "A man, a plan, a canal, Panama!";
-reversedString = (reverse (notAPalindrome));
+
+console.log ("Forwards:\n" + notAPalindrome + "\n");
 
 if (typeof notAPalindrome == "string") {
-	console.log ("Forwards:\n" + notAPalindrome);
-	console.log();
-	console.log ("Backwards:\n" + reversedString);
+	console.log ("Backwards:\n" + (reverse (notAPalindrome)));
 }
 
 
