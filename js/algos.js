@@ -115,11 +115,11 @@ var biggest = findBiggestString(strings);
 var obj1 = {name: "Steven", age: 54};
 var obj2 = {name: "Tamir", 'age': 54};
 
-// if (findMatch(obj1, obj2)) {
-// 	console.log("There was a match between the 2 objects.")
-// } else {
-// 	console.log("There was not a match between the 2 objects.")
-// };
+if (findMatch(obj1, obj2)) {
+	console.log("There was a match between the 2 objects.")
+} else {
+	console.log("There was not a match between the 2 objects.")
+};
 
 //---------
 //release 2
