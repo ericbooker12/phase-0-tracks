@@ -116,6 +116,7 @@ def cal_brews
 	]
 
 	puts "The name of brewery 5 is: #{california_breweries[5]['name']}"
+	puts "The beers at brewery 5 are: #{california_breweries[5]['beers'].join(", ")}"
 	puts "The beers at brewery 5 are: #{california_breweries[5]['beers']}"
 	puts "The beers at brewery 8 are: #{california_breweries[8]['beers']}"
 
