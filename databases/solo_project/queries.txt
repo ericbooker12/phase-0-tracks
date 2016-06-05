@@ -44,6 +44,18 @@
 7|Joseph|2016|2
 8|Arnold|2016|1
 
+Research on your own:
+LEFT JOIN:
+SELECT students.name, teachers.subject, grad_year FROM students LEFT JOIN teachers ON students.name=teachers.name;
+=>>
+Fred||2016
+Hank||2017
+Sally||2016
+Beth|History|2016
+Ann|Geography|2017
+Joseph||2016
+Arnold||2016
+
 
 
 
