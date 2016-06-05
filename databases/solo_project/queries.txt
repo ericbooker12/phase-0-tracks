@@ -1,0 +1,54 @@
+1. SELECT * FROM students;
+==> 
+1|Fred|2016|1
+2|Sam|2017|3
+3|Hank|2017|2
+4|Sally|2016|1
+5|Beth|2016|3
+6|Ann|2017|2
+7|Joe|2016|2
+8|Arnold|2016|1
+
+2. UPDATE students SET name = "Joseph" WHERE name = "Joe";
+
+3. SELECT * FROM students JOIN teachers ON students.teacher_id = teachers.id;
+==>
+1|Fred|2016|1|1|Johnson|English
+2|Sam|2017|3|3|Teagan|Science
+3|Hank|2017|2|2|Smith|Math
+4|Sally|2016|1|1|Johnson|English
+5|Beth|2016|3|3|Teagan|Science
+6|Ann|2017|2|2|Smith|Math
+7|Joseph|2016|2|2|Smith|Math
+8|Arnold|2016|1|1|Johnson|English
+
+4. SELECT students.student_num, students.name, teachers.subject, teachers.name FROM students JOIN teachers ON students.teacher_id = teachers.id;
+==>
+1|Fred|English|Johnson
+2|Sam|Science|Teagan
+3|Hank|Math|Smith
+4|Sally|English|Johnson
+5|Beth|Science|Teagan
+6|Ann|Math|Smith
+7|Joseph|Math|Smith
+8|Arnold|English|Johnson
+
+5. DELETE FROM students WHERE teacher_id = 3 AND grad_year > 2016;
+==>
+(Sam was deleted from the table)
+1|Fred|2016|1
+3|Hank|2017|2
+4|Sally|2016|1
+5|Beth|2016|3
+6|Ann|2017|2
+7|Joseph|2016|2
+8|Arnold|2016|1
+
+
+
+
+
+
+
+
+
