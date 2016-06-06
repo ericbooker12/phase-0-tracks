@@ -1,0 +1,488 @@
+welp :> touch welp.db
+
+welp :> sqlite3 welp.db
+SQLite version 3.8.10.2 2015-05-20 18:17:19
+Enter ".help" for usage hints.
+sqlite> CREATE TABLE businesses (id INTEGER PRIMARY KEY, name VARCHAR(255)) ;
+sqlite> .table
+businesses
+sqlite> CREATE TABLE users (id INTEGER PRIMARY KEY, firstName VARCHAR(255), lastName VARCHAR(255));
+sqlite> INSERT INTO businesses (name) VALUES (
+   ...> "Grundy Hollow WEdding Chapel");
+sqlite> INSERT INTO businesses (name) VALUES ("Amir's Towing");
+sqlite> INSERT INTO businesses (name) VALUES ("The Beagle Night Club");
+sqlite> INSERT INTO businesses (name) VALUES ("Lotus Yoga");
+sqlite> INSERT INTO businesses (name) VALUES ("Plumbing by Janet");
+sqlite> INSERT INTO businesses (name) VALUES ("Sushi World");
+sqlite> INSERT INTO businesses (name) VALUES ("JoeBob's Sportz Barn");
+sqlite> INSERT INTO users (firstName, lastName) VALUES (
+   ...> "Bradford", "Pitt");
+sqlite> INSERT INTO users (firstName, lastName) VALUES (
+   ...> "Mandy", "Kaling");
+sqlite> INSERT INTO users (firstName, lastName) VALUES ("Angela", "Jolie");
+sqlite> INSERT INTO users (firstName, lastName) VALUES ("Steven", "Wonder");
+sqlite> INSERT INTO users (firstName, lastName) VALUES ("Meryl", "Streepman");
+sqlite> INSERT INTO users (firstName, lastName) VALUES (
+   ...> "Denzel", "George");
+sqlite> INSERT INTO users (firstName, lastName) VALUES (
+   ...> "Holly", "Berry");
+sqlite> SELECT * FROM businesses;
+1|Grundy Hollow WEdding Chapel
+2|Amir's Towing
+3|The Beagle Night Club
+4|Lotus Yoga
+5|Plumbing by Janet
+6|Sushi World
+7|JoeBob's Sportz Barn
+sqlite> SELECT * FROM users;
+1|Bradford|Pitt
+2|Mandy|Kaling
+3|Angela|Jolie
+4|Steven|Wonder
+5|Meryl|Streepman
+6|Denzel|George
+7|Holly|Berry
+sqlite> .exit
+
+welp :> clear
+
+welp :> ls
+welp.db
+
+welp :> sqlite3 welp.db
+SQLite version 3.8.10.2 2015-05-20 18:17:19
+Enter ".help" for usage hints.
+sqlite> CREATE TABLE reviews (id INTEGER PRIMARY KEY,
+   ...> stars INT,
+   ...> comment VARCHAR(255),
+   ...> business_id INT,
+   ...> user_id INT,
+   ...> FOREIGN KEY (user_id) REFERENCES users(id),
+   ...> FOREIGN KEY (business_id) REFERENCES businesses(id));
+sqlite> .table
+businesses  reviews     users
+sqlite> SELECT * businesses;
+Error: near "businesses": syntax error
+sqlite> SELECT * FROM businesses;
+1|Grundy Hollow WEdding Chapel
+2|Amir's Towing
+3|The Beagle Night Club
+4|Lotus Yoga
+5|Plumbing by Janet
+6|Sushi World
+7|JoeBob's Sportz Barn
+sqlite> .schema
+CREATE TABLE businesses (id INTEGER PRIMARY KEY, name VARCHAR(255));
+CREATE TABLE users (id INTEGER PRIMARY KEY, firstName VARCHAR(255), lastName VARCHAR(255));
+CREATE TABLE reviews (id INTEGER PRIMARY KEY,
+stars INT,
+comment VARCHAR(255),
+business_id INT,
+user_id INT,
+FOREIGN KEY (user_id) REFERENCES users(id),
+FOREIGN KEY (business_id) REFERENCES businesses(id));
+sqlite> INSERT INTO reviews (stars, comment, business_id, user_id)
+   ...> VALUES (
+   ...> 5, "Fabulous", 6, 4);
+sqlite> SELECT * FROM reviews;
+1|5|Fabulous|6|4
+sqlite> INSERT INTO reviews (stars, comment, business_id, user_id) VALUES (
+   ...> 2, "Total rip off", 2, 6);
+sqlite> INSERT INTO reviews (stars, comment, business_id, user_id) VALUES (
+   ...> 4, "Made me sweat", 4, 2);
+sqlite> SELECT * FROM reviews;
+1|5|Fabulous|6|4
+2|2|Total rip off|2|6
+3|4|Made me sweat|4|2
+sqlite> .exit
+
+welp :> touch queries.touch
+
+welp :> ls
+queries.touch welp.db
+
+welp :> touch queries.txt
+
+welp :> git branch
+* 8_4-pair
+  master
+
+welp :> subl .
+
+welp :> sqlite3 welp.db
+SQLite version 3.8.10.2 2015-05-20 18:17:19
+Enter ".help" for usage hints.
+sqlite> SELECT * FROM users;
+1|Bradford|Pitt
+2|Mandy|Kaling
+3|Angela|Jolie
+4|Steven|Wonder
+5|Meryl|Streepman
+6|Denzel|George
+7|Holly|Berry
+sqlite> SELECT * FROM businesses;
+1|Grundy Hollow WEdding Chapel
+2|Amir's Towing
+3|The Beagle Night Club
+4|Lotus Yoga
+5|Plumbing by Janet
+6|Sushi World
+7|JoeBob's Sportz Barn
+sqlite> SELECT * FROM users, businesses, reviews;
+1|Bradford|Pitt|1|Grundy Hollow WEdding Chapel|1|5|Fabulous|6|4
+1|Bradford|Pitt|1|Grundy Hollow WEdding Chapel|2|2|Total rip off|2|6
+1|Bradford|Pitt|1|Grundy Hollow WEdding Chapel|3|4|Made me sweat|4|2
+1|Bradford|Pitt|2|Amir's Towing|1|5|Fabulous|6|4
+1|Bradford|Pitt|2|Amir's Towing|2|2|Total rip off|2|6
+1|Bradford|Pitt|2|Amir's Towing|3|4|Made me sweat|4|2
+1|Bradford|Pitt|3|The Beagle Night Club|1|5|Fabulous|6|4
+1|Bradford|Pitt|3|The Beagle Night Club|2|2|Total rip off|2|6
+1|Bradford|Pitt|3|The Beagle Night Club|3|4|Made me sweat|4|2
+1|Bradford|Pitt|4|Lotus Yoga|1|5|Fabulous|6|4
+1|Bradford|Pitt|4|Lotus Yoga|2|2|Total rip off|2|6
+1|Bradford|Pitt|4|Lotus Yoga|3|4|Made me sweat|4|2
+1|Bradford|Pitt|5|Plumbing by Janet|1|5|Fabulous|6|4
+1|Bradford|Pitt|5|Plumbing by Janet|2|2|Total rip off|2|6
+1|Bradford|Pitt|5|Plumbing by Janet|3|4|Made me sweat|4|2
+1|Bradford|Pitt|6|Sushi World|1|5|Fabulous|6|4
+1|Bradford|Pitt|6|Sushi World|2|2|Total rip off|2|6
+1|Bradford|Pitt|6|Sushi World|3|4|Made me sweat|4|2
+1|Bradford|Pitt|7|JoeBob's Sportz Barn|1|5|Fabulous|6|4
+1|Bradford|Pitt|7|JoeBob's Sportz Barn|2|2|Total rip off|2|6
+1|Bradford|Pitt|7|JoeBob's Sportz Barn|3|4|Made me sweat|4|2
+2|Mandy|Kaling|1|Grundy Hollow WEdding Chapel|1|5|Fabulous|6|4
+2|Mandy|Kaling|1|Grundy Hollow WEdding Chapel|2|2|Total rip off|2|6
+2|Mandy|Kaling|1|Grundy Hollow WEdding Chapel|3|4|Made me sweat|4|2
+2|Mandy|Kaling|2|Amir's Towing|1|5|Fabulous|6|4
+2|Mandy|Kaling|2|Amir's Towing|2|2|Total rip off|2|6
+2|Mandy|Kaling|2|Amir's Towing|3|4|Made me sweat|4|2
+2|Mandy|Kaling|3|The Beagle Night Club|1|5|Fabulous|6|4
+2|Mandy|Kaling|3|The Beagle Night Club|2|2|Total rip off|2|6
+2|Mandy|Kaling|3|The Beagle Night Club|3|4|Made me sweat|4|2
+2|Mandy|Kaling|4|Lotus Yoga|1|5|Fabulous|6|4
+2|Mandy|Kaling|4|Lotus Yoga|2|2|Total rip off|2|6
+2|Mandy|Kaling|4|Lotus Yoga|3|4|Made me sweat|4|2
+2|Mandy|Kaling|5|Plumbing by Janet|1|5|Fabulous|6|4
+2|Mandy|Kaling|5|Plumbing by Janet|2|2|Total rip off|2|6
+2|Mandy|Kaling|5|Plumbing by Janet|3|4|Made me sweat|4|2
+2|Mandy|Kaling|6|Sushi World|1|5|Fabulous|6|4
+2|Mandy|Kaling|6|Sushi World|2|2|Total rip off|2|6
+2|Mandy|Kaling|6|Sushi World|3|4|Made me sweat|4|2
+2|Mandy|Kaling|7|JoeBob's Sportz Barn|1|5|Fabulous|6|4
+2|Mandy|Kaling|7|JoeBob's Sportz Barn|2|2|Total rip off|2|6
+2|Mandy|Kaling|7|JoeBob's Sportz Barn|3|4|Made me sweat|4|2
+3|Angela|Jolie|1|Grundy Hollow WEdding Chapel|1|5|Fabulous|6|4
+3|Angela|Jolie|1|Grundy Hollow WEdding Chapel|2|2|Total rip off|2|6
+3|Angela|Jolie|1|Grundy Hollow WEdding Chapel|3|4|Made me sweat|4|2
+3|Angela|Jolie|2|Amir's Towing|1|5|Fabulous|6|4
+3|Angela|Jolie|2|Amir's Towing|2|2|Total rip off|2|6
+3|Angela|Jolie|2|Amir's Towing|3|4|Made me sweat|4|2
+3|Angela|Jolie|3|The Beagle Night Club|1|5|Fabulous|6|4
+3|Angela|Jolie|3|The Beagle Night Club|2|2|Total rip off|2|6
+3|Angela|Jolie|3|The Beagle Night Club|3|4|Made me sweat|4|2
+3|Angela|Jolie|4|Lotus Yoga|1|5|Fabulous|6|4
+3|Angela|Jolie|4|Lotus Yoga|2|2|Total rip off|2|6
+3|Angela|Jolie|4|Lotus Yoga|3|4|Made me sweat|4|2
+3|Angela|Jolie|5|Plumbing by Janet|1|5|Fabulous|6|4
+3|Angela|Jolie|5|Plumbing by Janet|2|2|Total rip off|2|6
+3|Angela|Jolie|5|Plumbing by Janet|3|4|Made me sweat|4|2
+3|Angela|Jolie|6|Sushi World|1|5|Fabulous|6|4
+3|Angela|Jolie|6|Sushi World|2|2|Total rip off|2|6
+3|Angela|Jolie|6|Sushi World|3|4|Made me sweat|4|2
+3|Angela|Jolie|7|JoeBob's Sportz Barn|1|5|Fabulous|6|4
+3|Angela|Jolie|7|JoeBob's Sportz Barn|2|2|Total rip off|2|6
+3|Angela|Jolie|7|JoeBob's Sportz Barn|3|4|Made me sweat|4|2
+4|Steven|Wonder|1|Grundy Hollow WEdding Chapel|1|5|Fabulous|6|4
+4|Steven|Wonder|1|Grundy Hollow WEdding Chapel|2|2|Total rip off|2|6
+4|Steven|Wonder|1|Grundy Hollow WEdding Chapel|3|4|Made me sweat|4|2
+4|Steven|Wonder|2|Amir's Towing|1|5|Fabulous|6|4
+4|Steven|Wonder|2|Amir's Towing|2|2|Total rip off|2|6
+4|Steven|Wonder|2|Amir's Towing|3|4|Made me sweat|4|2
+4|Steven|Wonder|3|The Beagle Night Club|1|5|Fabulous|6|4
+4|Steven|Wonder|3|The Beagle Night Club|2|2|Total rip off|2|6
+4|Steven|Wonder|3|The Beagle Night Club|3|4|Made me sweat|4|2
+4|Steven|Wonder|4|Lotus Yoga|1|5|Fabulous|6|4
+4|Steven|Wonder|4|Lotus Yoga|2|2|Total rip off|2|6
+4|Steven|Wonder|4|Lotus Yoga|3|4|Made me sweat|4|2
+4|Steven|Wonder|5|Plumbing by Janet|1|5|Fabulous|6|4
+4|Steven|Wonder|5|Plumbing by Janet|2|2|Total rip off|2|6
+4|Steven|Wonder|5|Plumbing by Janet|3|4|Made me sweat|4|2
+4|Steven|Wonder|6|Sushi World|1|5|Fabulous|6|4
+4|Steven|Wonder|6|Sushi World|2|2|Total rip off|2|6
+4|Steven|Wonder|6|Sushi World|3|4|Made me sweat|4|2
+4|Steven|Wonder|7|JoeBob's Sportz Barn|1|5|Fabulous|6|4
+4|Steven|Wonder|7|JoeBob's Sportz Barn|2|2|Total rip off|2|6
+4|Steven|Wonder|7|JoeBob's Sportz Barn|3|4|Made me sweat|4|2
+5|Meryl|Streepman|1|Grundy Hollow WEdding Chapel|1|5|Fabulous|6|4
+5|Meryl|Streepman|1|Grundy Hollow WEdding Chapel|2|2|Total rip off|2|6
+5|Meryl|Streepman|1|Grundy Hollow WEdding Chapel|3|4|Made me sweat|4|2
+5|Meryl|Streepman|2|Amir's Towing|1|5|Fabulous|6|4
+5|Meryl|Streepman|2|Amir's Towing|2|2|Total rip off|2|6
+5|Meryl|Streepman|2|Amir's Towing|3|4|Made me sweat|4|2
+5|Meryl|Streepman|3|The Beagle Night Club|1|5|Fabulous|6|4
+5|Meryl|Streepman|3|The Beagle Night Club|2|2|Total rip off|2|6
+5|Meryl|Streepman|3|The Beagle Night Club|3|4|Made me sweat|4|2
+5|Meryl|Streepman|4|Lotus Yoga|1|5|Fabulous|6|4
+5|Meryl|Streepman|4|Lotus Yoga|2|2|Total rip off|2|6
+5|Meryl|Streepman|4|Lotus Yoga|3|4|Made me sweat|4|2
+5|Meryl|Streepman|5|Plumbing by Janet|1|5|Fabulous|6|4
+5|Meryl|Streepman|5|Plumbing by Janet|2|2|Total rip off|2|6
+5|Meryl|Streepman|5|Plumbing by Janet|3|4|Made me sweat|4|2
+5|Meryl|Streepman|6|Sushi World|1|5|Fabulous|6|4
+5|Meryl|Streepman|6|Sushi World|2|2|Total rip off|2|6
+5|Meryl|Streepman|6|Sushi World|3|4|Made me sweat|4|2
+5|Meryl|Streepman|7|JoeBob's Sportz Barn|1|5|Fabulous|6|4
+5|Meryl|Streepman|7|JoeBob's Sportz Barn|2|2|Total rip off|2|6
+5|Meryl|Streepman|7|JoeBob's Sportz Barn|3|4|Made me sweat|4|2
+6|Denzel|George|1|Grundy Hollow WEdding Chapel|1|5|Fabulous|6|4
+6|Denzel|George|1|Grundy Hollow WEdding Chapel|2|2|Total rip off|2|6
+6|Denzel|George|1|Grundy Hollow WEdding Chapel|3|4|Made me sweat|4|2
+6|Denzel|George|2|Amir's Towing|1|5|Fabulous|6|4
+6|Denzel|George|2|Amir's Towing|2|2|Total rip off|2|6
+6|Denzel|George|2|Amir's Towing|3|4|Made me sweat|4|2
+6|Denzel|George|3|The Beagle Night Club|1|5|Fabulous|6|4
+6|Denzel|George|3|The Beagle Night Club|2|2|Total rip off|2|6
+6|Denzel|George|3|The Beagle Night Club|3|4|Made me sweat|4|2
+6|Denzel|George|4|Lotus Yoga|1|5|Fabulous|6|4
+6|Denzel|George|4|Lotus Yoga|2|2|Total rip off|2|6
+6|Denzel|George|4|Lotus Yoga|3|4|Made me sweat|4|2
+6|Denzel|George|5|Plumbing by Janet|1|5|Fabulous|6|4
+6|Denzel|George|5|Plumbing by Janet|2|2|Total rip off|2|6
+6|Denzel|George|5|Plumbing by Janet|3|4|Made me sweat|4|2
+6|Denzel|George|6|Sushi World|1|5|Fabulous|6|4
+6|Denzel|George|6|Sushi World|2|2|Total rip off|2|6
+6|Denzel|George|6|Sushi World|3|4|Made me sweat|4|2
+6|Denzel|George|7|JoeBob's Sportz Barn|1|5|Fabulous|6|4
+6|Denzel|George|7|JoeBob's Sportz Barn|2|2|Total rip off|2|6
+6|Denzel|George|7|JoeBob's Sportz Barn|3|4|Made me sweat|4|2
+7|Holly|Berry|1|Grundy Hollow WEdding Chapel|1|5|Fabulous|6|4
+7|Holly|Berry|1|Grundy Hollow WEdding Chapel|2|2|Total rip off|2|6
+7|Holly|Berry|1|Grundy Hollow WEdding Chapel|3|4|Made me sweat|4|2
+7|Holly|Berry|2|Amir's Towing|1|5|Fabulous|6|4
+7|Holly|Berry|2|Amir's Towing|2|2|Total rip off|2|6
+7|Holly|Berry|2|Amir's Towing|3|4|Made me sweat|4|2
+7|Holly|Berry|3|The Beagle Night Club|1|5|Fabulous|6|4
+7|Holly|Berry|3|The Beagle Night Club|2|2|Total rip off|2|6
+7|Holly|Berry|3|The Beagle Night Club|3|4|Made me sweat|4|2
+7|Holly|Berry|4|Lotus Yoga|1|5|Fabulous|6|4
+7|Holly|Berry|4|Lotus Yoga|2|2|Total rip off|2|6
+7|Holly|Berry|4|Lotus Yoga|3|4|Made me sweat|4|2
+7|Holly|Berry|5|Plumbing by Janet|1|5|Fabulous|6|4
+7|Holly|Berry|5|Plumbing by Janet|2|2|Total rip off|2|6
+7|Holly|Berry|5|Plumbing by Janet|3|4|Made me sweat|4|2
+7|Holly|Berry|6|Sushi World|1|5|Fabulous|6|4
+7|Holly|Berry|6|Sushi World|2|2|Total rip off|2|6
+7|Holly|Berry|6|Sushi World|3|4|Made me sweat|4|2
+7|Holly|Berry|7|JoeBob's Sportz Barn|1|5|Fabulous|6|4
+7|Holly|Berry|7|JoeBob's Sportz Barn|2|2|Total rip off|2|6
+7|Holly|Berry|7|JoeBob's Sportz Barn|3|4|Made me sweat|4|2
+sqlite> .schema
+CREATE TABLE businesses (id INTEGER PRIMARY KEY, name VARCHAR(255));
+CREATE TABLE users (id INTEGER PRIMARY KEY, firstName VARCHAR(255), lastName VARCHAR(255));
+CREATE TABLE reviews (id INTEGER PRIMARY KEY,
+stars INT,
+comment VARCHAR(255),
+business_id INT,
+user_id INT,
+FOREIGN KEY (user_id) REFERENCES users(id),
+FOREIGN KEY (business_id) REFERENCES businesses(id));
+sqlite> SELECT users.firstName, users.lastName, businesses.name, reviews.stars, reviews.comment
+   ...> WHERE businesses_id = business.id AND user_id = users.id;
+Error: no such column: users.firstName
+sqlite> SELECT users.firstName, users.lastName, businesses.name, reviews.stars, reviews.comment
+   ...> FROM users
+   ...> WHERE businesses_id = business.id AND user_id = users.id;
+Error: no such column: businesses.name
+sqlite> SELECT users.firstName, users.lastName, businesses.name, reviews.stars, reviews.comment
+   ...> FROM users
+   ...> JOIN businesses
+   ...> JOIN reviews
+   ...> ;
+Bradford|Pitt|Grundy Hollow WEdding Chapel|5|Fabulous
+Bradford|Pitt|Grundy Hollow WEdding Chapel|2|Total rip off
+Bradford|Pitt|Grundy Hollow WEdding Chapel|4|Made me sweat
+Bradford|Pitt|Amir's Towing|5|Fabulous
+Bradford|Pitt|Amir's Towing|2|Total rip off
+Bradford|Pitt|Amir's Towing|4|Made me sweat
+Bradford|Pitt|The Beagle Night Club|5|Fabulous
+Bradford|Pitt|The Beagle Night Club|2|Total rip off
+Bradford|Pitt|The Beagle Night Club|4|Made me sweat
+Bradford|Pitt|Lotus Yoga|5|Fabulous
+Bradford|Pitt|Lotus Yoga|2|Total rip off
+Bradford|Pitt|Lotus Yoga|4|Made me sweat
+Bradford|Pitt|Plumbing by Janet|5|Fabulous
+Bradford|Pitt|Plumbing by Janet|2|Total rip off
+Bradford|Pitt|Plumbing by Janet|4|Made me sweat
+Bradford|Pitt|Sushi World|5|Fabulous
+Bradford|Pitt|Sushi World|2|Total rip off
+Bradford|Pitt|Sushi World|4|Made me sweat
+Bradford|Pitt|JoeBob's Sportz Barn|5|Fabulous
+Bradford|Pitt|JoeBob's Sportz Barn|2|Total rip off
+Bradford|Pitt|JoeBob's Sportz Barn|4|Made me sweat
+Mandy|Kaling|Grundy Hollow WEdding Chapel|5|Fabulous
+Mandy|Kaling|Grundy Hollow WEdding Chapel|2|Total rip off
+Mandy|Kaling|Grundy Hollow WEdding Chapel|4|Made me sweat
+Mandy|Kaling|Amir's Towing|5|Fabulous
+Mandy|Kaling|Amir's Towing|2|Total rip off
+Mandy|Kaling|Amir's Towing|4|Made me sweat
+Mandy|Kaling|The Beagle Night Club|5|Fabulous
+Mandy|Kaling|The Beagle Night Club|2|Total rip off
+Mandy|Kaling|The Beagle Night Club|4|Made me sweat
+Mandy|Kaling|Lotus Yoga|5|Fabulous
+Mandy|Kaling|Lotus Yoga|2|Total rip off
+Mandy|Kaling|Lotus Yoga|4|Made me sweat
+Mandy|Kaling|Plumbing by Janet|5|Fabulous
+Mandy|Kaling|Plumbing by Janet|2|Total rip off
+Mandy|Kaling|Plumbing by Janet|4|Made me sweat
+Mandy|Kaling|Sushi World|5|Fabulous
+Mandy|Kaling|Sushi World|2|Total rip off
+Mandy|Kaling|Sushi World|4|Made me sweat
+Mandy|Kaling|JoeBob's Sportz Barn|5|Fabulous
+Mandy|Kaling|JoeBob's Sportz Barn|2|Total rip off
+Mandy|Kaling|JoeBob's Sportz Barn|4|Made me sweat
+Angela|Jolie|Grundy Hollow WEdding Chapel|5|Fabulous
+Angela|Jolie|Grundy Hollow WEdding Chapel|2|Total rip off
+Angela|Jolie|Grundy Hollow WEdding Chapel|4|Made me sweat
+Angela|Jolie|Amir's Towing|5|Fabulous
+Angela|Jolie|Amir's Towing|2|Total rip off
+Angela|Jolie|Amir's Towing|4|Made me sweat
+Angela|Jolie|The Beagle Night Club|5|Fabulous
+Angela|Jolie|The Beagle Night Club|2|Total rip off
+Angela|Jolie|The Beagle Night Club|4|Made me sweat
+Angela|Jolie|Lotus Yoga|5|Fabulous
+Angela|Jolie|Lotus Yoga|2|Total rip off
+Angela|Jolie|Lotus Yoga|4|Made me sweat
+Angela|Jolie|Plumbing by Janet|5|Fabulous
+Angela|Jolie|Plumbing by Janet|2|Total rip off
+Angela|Jolie|Plumbing by Janet|4|Made me sweat
+Angela|Jolie|Sushi World|5|Fabulous
+Angela|Jolie|Sushi World|2|Total rip off
+Angela|Jolie|Sushi World|4|Made me sweat
+Angela|Jolie|JoeBob's Sportz Barn|5|Fabulous
+Angela|Jolie|JoeBob's Sportz Barn|2|Total rip off
+Angela|Jolie|JoeBob's Sportz Barn|4|Made me sweat
+Steven|Wonder|Grundy Hollow WEdding Chapel|5|Fabulous
+Steven|Wonder|Grundy Hollow WEdding Chapel|2|Total rip off
+Steven|Wonder|Grundy Hollow WEdding Chapel|4|Made me sweat
+Steven|Wonder|Amir's Towing|5|Fabulous
+Steven|Wonder|Amir's Towing|2|Total rip off
+Steven|Wonder|Amir's Towing|4|Made me sweat
+Steven|Wonder|The Beagle Night Club|5|Fabulous
+Steven|Wonder|The Beagle Night Club|2|Total rip off
+Steven|Wonder|The Beagle Night Club|4|Made me sweat
+Steven|Wonder|Lotus Yoga|5|Fabulous
+Steven|Wonder|Lotus Yoga|2|Total rip off
+Steven|Wonder|Lotus Yoga|4|Made me sweat
+Steven|Wonder|Plumbing by Janet|5|Fabulous
+Steven|Wonder|Plumbing by Janet|2|Total rip off
+Steven|Wonder|Plumbing by Janet|4|Made me sweat
+Steven|Wonder|Sushi World|5|Fabulous
+Steven|Wonder|Sushi World|2|Total rip off
+Steven|Wonder|Sushi World|4|Made me sweat
+Steven|Wonder|JoeBob's Sportz Barn|5|Fabulous
+Steven|Wonder|JoeBob's Sportz Barn|2|Total rip off
+Steven|Wonder|JoeBob's Sportz Barn|4|Made me sweat
+Meryl|Streepman|Grundy Hollow WEdding Chapel|5|Fabulous
+Meryl|Streepman|Grundy Hollow WEdding Chapel|2|Total rip off
+Meryl|Streepman|Grundy Hollow WEdding Chapel|4|Made me sweat
+Meryl|Streepman|Amir's Towing|5|Fabulous
+Meryl|Streepman|Amir's Towing|2|Total rip off
+Meryl|Streepman|Amir's Towing|4|Made me sweat
+Meryl|Streepman|The Beagle Night Club|5|Fabulous
+Meryl|Streepman|The Beagle Night Club|2|Total rip off
+Meryl|Streepman|The Beagle Night Club|4|Made me sweat
+Meryl|Streepman|Lotus Yoga|5|Fabulous
+Meryl|Streepman|Lotus Yoga|2|Total rip off
+Meryl|Streepman|Lotus Yoga|4|Made me sweat
+Meryl|Streepman|Plumbing by Janet|5|Fabulous
+Meryl|Streepman|Plumbing by Janet|2|Total rip off
+Meryl|Streepman|Plumbing by Janet|4|Made me sweat
+Meryl|Streepman|Sushi World|5|Fabulous
+Meryl|Streepman|Sushi World|2|Total rip off
+Meryl|Streepman|Sushi World|4|Made me sweat
+Meryl|Streepman|JoeBob's Sportz Barn|5|Fabulous
+Meryl|Streepman|JoeBob's Sportz Barn|2|Total rip off
+Meryl|Streepman|JoeBob's Sportz Barn|4|Made me sweat
+Denzel|George|Grundy Hollow WEdding Chapel|5|Fabulous
+Denzel|George|Grundy Hollow WEdding Chapel|2|Total rip off
+Denzel|George|Grundy Hollow WEdding Chapel|4|Made me sweat
+Denzel|George|Amir's Towing|5|Fabulous
+Denzel|George|Amir's Towing|2|Total rip off
+Denzel|George|Amir's Towing|4|Made me sweat
+Denzel|George|The Beagle Night Club|5|Fabulous
+Denzel|George|The Beagle Night Club|2|Total rip off
+Denzel|George|The Beagle Night Club|4|Made me sweat
+Denzel|George|Lotus Yoga|5|Fabulous
+Denzel|George|Lotus Yoga|2|Total rip off
+Denzel|George|Lotus Yoga|4|Made me sweat
+Denzel|George|Plumbing by Janet|5|Fabulous
+Denzel|George|Plumbing by Janet|2|Total rip off
+Denzel|George|Plumbing by Janet|4|Made me sweat
+Denzel|George|Sushi World|5|Fabulous
+Denzel|George|Sushi World|2|Total rip off
+Denzel|George|Sushi World|4|Made me sweat
+Denzel|George|JoeBob's Sportz Barn|5|Fabulous
+Denzel|George|JoeBob's Sportz Barn|2|Total rip off
+Denzel|George|JoeBob's Sportz Barn|4|Made me sweat
+Holly|Berry|Grundy Hollow WEdding Chapel|5|Fabulous
+Holly|Berry|Grundy Hollow WEdding Chapel|2|Total rip off
+Holly|Berry|Grundy Hollow WEdding Chapel|4|Made me sweat
+Holly|Berry|Amir's Towing|5|Fabulous
+Holly|Berry|Amir's Towing|2|Total rip off
+Holly|Berry|Amir's Towing|4|Made me sweat
+Holly|Berry|The Beagle Night Club|5|Fabulous
+Holly|Berry|The Beagle Night Club|2|Total rip off
+Holly|Berry|The Beagle Night Club|4|Made me sweat
+Holly|Berry|Lotus Yoga|5|Fabulous
+Holly|Berry|Lotus Yoga|2|Total rip off
+Holly|Berry|Lotus Yoga|4|Made me sweat
+Holly|Berry|Plumbing by Janet|5|Fabulous
+Holly|Berry|Plumbing by Janet|2|Total rip off
+Holly|Berry|Plumbing by Janet|4|Made me sweat
+Holly|Berry|Sushi World|5|Fabulous
+Holly|Berry|Sushi World|2|Total rip off
+Holly|Berry|Sushi World|4|Made me sweat
+Holly|Berry|JoeBob's Sportz Barn|5|Fabulous
+Holly|Berry|JoeBob's Sportz Barn|2|Total rip off
+Holly|Berry|JoeBob's Sportz Barn|4|Made me sweat
+sqlite> SELECT users.firstName, users.lastName, businesses.name, reviews.stars, reviews.comment
+   ...> FROM users
+   ...> JOIN reviews
+   ...> ON users.id = reviews.user_id
+   ...> JOIN businesses
+   ...> ON reviews.business_id = business.id;
+Error: no such column: business.id
+sqlite> SELECT users.firstName, users.lastName, businesses.name, reviews.stars, reviews.comment
+   ...> FROM users
+   ...> JOIN reviews
+   ...> ON users.id = reviews.user_id
+   ...> JOIN businesses
+   ...> ON reviews.business_id = businesses.id;
+Steven|Wonder|Sushi World|5|Fabulous
+Denzel|George|Amir's Towing|2|Total rip off
+Mandy|Kaling|Lotus Yoga|4|Made me sweat
+sqlite> SELECT * FROM users, businesses, reviews
+   ...> WHERE businesses.id = 6 AND reviews.business_id = 6 AND users.id = reviews.user_id;
+4|Steven|Wonder|6|Sushi World|1|5|Fabulous|6|4
+sqlite> CREATE TABLE artists (id INTEGER PRIMARY KEY, name VARCHAR(255));
+sqlite> .table
+artists     businesses  reviews     users
+sqlite> INSERT INTO artists (name) VLAUES ("Beyonde");
+Error: near "VLAUES": syntax error
+sqlite> INSERT INTO artists (name) VALUES ("Beyonde");
+sqlite> SELECT * FROM artists
+   ...> ;
+1|Beyonde
+sqlite> CREATE TABLE songs (id INTEGER PRIMARY KEY, name VARCHAR(255), downloads INT);
+sqlite> INSERT INTO songs ( name, downloads) VALUES ("Just a Toy", 678000);
+sqlite> SELECT * FROM songs;
+1|Just a Toy|678000
+sqlite> CREATE TABLE artists_songs (id INTEGER PRIMARY KEY, song_id INT, artist_id INT,
+   ...> FOREIGN KEY(song_id) REFERENCES songs(id),
+   ...> FOREIGN KEY(artist_id) REFERENCES artits(id);
+Error: near ";": syntax error
+sqlite> CREATE TABLE artists_songs (id INTEGER PRIMARY KEY, song_id INT, artist_id INT,
+   ...> FOREIGN KEY(song_id) REFERENCES songs(id),
+   ...> FOREIGN KEY(artist_id) REFERENCES artits(id));
+sqlite> SELECT * FROM artists_songs;
+sqlite>
