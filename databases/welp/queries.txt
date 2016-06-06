@@ -1,3 +1,4 @@
+
 3. Join 3 tables:
 SELECT users.firstName, users.lastName, businesses.name, reviews.stars, reviews.comment 
     FROM users
