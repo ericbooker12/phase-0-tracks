@@ -1,0 +1,17 @@
+sqlite> SELECT users.firstName, users.lastName, businesses.name, reviews.stars, reviews.comment
+   ...> FROM users
+   ...> JOIN reviews
+   ...> ON users.id = reviews.user_id
+   ...> JOIN businesses
+   ...> ON reviews.business_id = businesses.id;
+
+   ==>
+Steven|Wonder|Sushi World|5|Fabulous
+Denzel|George|Amir's Towing|2|Total rip off
+Mandy|Kaling|Lotus Yoga|4|Made me sweat
+
+
+sqlite> SELECT * FROM users, businesses, reviews
+   ...> WHERE businesses.id = 6 AND reviews.business_id = 6 AND users.id = reviews.user_id;
+4|Steven|Wonder|6|Sushi World|1|5|Fabulous|6|4
+sqlite>
