@@ -8,7 +8,7 @@ require 'faker'
 
 # create SQLite3 database
 db = SQLite3::Database.new("well_data.db")
-db.results_as_hash = true
+# db.results_as_hash = true
 
 # learn about fancy string delimiters
 
@@ -28,24 +28,20 @@ db.execute(create_table_cmd)
 
 # Add data to well table 
 def create_well(db, name, location, depth, active)
-  db.execute("INSERT INTO well (name, location, depth, active) VALUES (?, ?, ?, ?)", [name, location, depth, active])
+  db.execute("INSERT INTO wells (name, location, depth, active) VALUES (?, ?, ?, ?)", [name, location, depth, active])
 end
 
-file = File.new("well_info.txt")
-line = file.readline.chomp
-p line
-p file.size
-
-full_text = File.read("well_info.txt")
-p full_text
-
+# Open well_info.txt, read data and load it into wells table in well_data database.
+data_array = [];
 File.open("well_info.txt") do |f|
 	f.each do |record|
 		name, location, depth, active = record.chomp.split(',')
-		puts "#{name}==#{location}==#{depth}==#{active}"
+		create_well(db, name, location, depth, active)
 	end
 end
 
+well_table = db.execute("SELECT * FROM wells")
+p well_table
 
 # 2.times do
 #   create_kitten(db, Faker::Name.name, 0)
