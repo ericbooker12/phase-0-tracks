@@ -12,7 +12,7 @@ db = SQLite3::Database.new("well_data.db")
 
 # learn about fancy string delimiters
 
-create_table_cmd = <<-SQL
+create_well_table_cmd = <<-SQL
   CREATE TABLE IF NOT EXISTS wells(
     id INTEGER PRIMARY KEY,
     name VARCHAR(255),
@@ -22,9 +22,20 @@ create_table_cmd = <<-SQL
   )
 SQL
 
+create_drill_data_table_cmd = <<-SQL
+  CREATE TABLE IF NOT EXISTS drill_data(
+    id INTEGER PRIMARY KEY,
+    depth REAL,
+    drill_rate REAL,
+    temp_in REAL,
+    temp_out REAL
+  )
+SQL
+
 # create the table (if it's not there already)
 	
-db.execute(create_table_cmd)
+db.execute(create_well_table_cmd)
+db.execute(create_drill_data_table_cmd)
 
 # Add data to well table 
 def create_well(db, name, location, depth, active)
@@ -33,7 +44,7 @@ end
 
 # Open well_info.txt, read data and load it into wells table in well_data database.
 data_array = [];
-File.open("well_info.txt") do |f|
+File.open("data/well_info.txt") do |f|
 	f.each do |record|
 		name, location, depth, active = record.chomp.split(',')
 		create_well(db, name, location, depth, active)
@@ -43,9 +54,7 @@ end
 well_table = db.execute("SELECT * FROM wells")
 p well_table
 
-# 2.times do
-#   create_kitten(db, Faker::Name.name, 0)
-# end
+
 
 # explore ORM by retrieving data
 # kittens = db.execute("SELECT * FROM kittens")

@@ -1,3 +1,0 @@
-well_1, Sonoma County, 9479, true
-well_2, Sonoma County, 4693, true
-well_3, Sonoma County, 9407, true
