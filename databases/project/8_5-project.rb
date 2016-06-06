@@ -32,6 +32,20 @@ def create_well(db, name, location, depth, active)
 end
 
 file = File.new("well_info.txt")
+line = file.readline.chomp
+p line
+p file.size
+
+full_text = File.read("well_info.txt")
+p full_text
+
+File.open("well_info.txt") do |f|
+	f.each do |record|
+		name, location, depth, active = record.chomp.split(',')
+		puts "#{name}==#{location}==#{depth}==#{active}"
+	end
+end
+
 
 # 2.times do
 #   create_kitten(db, Faker::Name.name, 0)
