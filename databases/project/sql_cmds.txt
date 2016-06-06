@@ -1,0 +1,14 @@
+ SELECT * FROM wells JOIN drill_data ON wells.id = drill_data.well_id AND wells.id = 1 AND drill_data.depth > 90;
+
+ SELECT drill_data.temperature, drill_data.depth, wells.name FROM wells JOIN drill_data ON wells.id = drill_data.well_id AND wells.id = 1 AND drill_data.depth > 90 AND drill_data.depth < 94;
+
+SELECT * FROM movies
+WHERE name BETWEEN 'A' AND 'J';
+
+SELECT * FROM movies
+ORDER BY imdb_rating ASC
+LIMIT 3;
+
+ SELECT drill_data.temperature, drill_data.depth, wells.name FROM wells JOIN drill_data ON wells.id = drill_data.well_id AND wells.id = 1 AND drill_data.depth > 90 AND drill_data.depth < 94
+ ORDER BY drill_data.depth
+ LIMIT 1;
