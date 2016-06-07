@@ -1,9 +1,15 @@
+# This program takes data from texts files and loads them into a database. 
+# The data is reall data collected from geothermal wells in The Geysers in Lake and Sonoma Counties.
+# It creates one table with general info about the wells. The second table stores data collected at the time of 
+# drilling: rate of penetration and temperature at each depth. The 2 tables are linked by the Foreign Key well_id
+# in the drill_data table to the Primary Key id in the wells table.
+
+# Note: You will need to keep the directory named "data" with all the files inside, in the same folder as 
+# this programm in order for it to work.
 
 # require gems
 require 'sqlite3'
 require 'faker'
-
-
 
 # create SQLite3 database
 db = SQLite3::Database.new("well_data.db")
@@ -125,8 +131,7 @@ while flag do
 		end
 	end
 
-	print "At #{input_1}ft (actual depth: #{new_table[0][1]}ft), " 
-	p "the temperature of the well named \"#{new_table[0][2]}\" is #{new_table[0][0]} deg fahrenheit."
+	puts"At #{input_1}ft (actual depth: #{new_table[0][1]}ft), the temperature of the well named \"#{new_table[0][2]}\" is #{new_table[0][0]} deg fahrenheit."
 
 end
 
