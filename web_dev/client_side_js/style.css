@@ -1,0 +1,17 @@
+#press-me {
+	height: 200px;
+	width: 200px;
+	background-color: red;
+
+}
+
+#another-square {
+	height: 200px;
+	width: 200px;
+	background-color: blue;
+	visibility: hidden;
+}
+
+#blue-square-text {
+	visibility: hidden;
+}
