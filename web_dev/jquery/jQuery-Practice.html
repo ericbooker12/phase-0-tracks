@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery Fun</title>
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="jquery-3.0.0.js"></script>
+	<script type="text/javascript">
+		$("document").ready(function() {
+			$("body").append("<p>The page just loaded!</p>");
+
+			$("#intro").css({
+				"padding" : "25px",
+				"font-family" : "Arial"
+				});
+
+			$("#more-lorem").css({
+				"margin-left" : "50px",
+				"margin-right" : "50px",
+				});
+
+			$(".boxes").css({
+				"border" : "3px solid blue",
+				"margin-left" : "50px",
+				"margin-right" : "50px",
+				"padding": "10px"
+			});
+
+			$(".blue-div").css({
+				"background-color" : "powderblue",
+				"height" : "400px",
+				"width" : "800px",
+				"border" : "1px solid black",
+				"padding" : "25px",
+				"margin": "auto"
+			});
+
+			// Create event listeners inside of div
+			$(".blue-div").on("mousemove", onMouseOver);
+			$(".blue-div").on("click", onMouseClick);
+			$(".blue-div").on("mouseleave", onMouseLeave);
+
+			// functions to handle events
+			function onMouseOver(evt) {
+				$(".blue-div").text("Mouse Position: " + evt.pageX + ", " + 
+					evt.pageY + "\n" + "Button: " + evt.which + 
+					" Key: " + evt.metaKey);
+			}
+
+			function onMouseClick(evt) {
+				$(".blue-div").text("Mouse clicked at: " + evt.pageX + ", " + evt.pageY);
+			}
+
+			function onMouseLeave(evt) {
+				$(".blue-div").text("The mouse has left the area.")
+			}
+
+			var newP = $("<p>");
+			var someText = "This is some more random text that is stored inside of a variable."
+
+			newP.append("<em>This content (lorem text) was replaced (appended) by this emphasized text using jQuery.</em>");
+
+			$("#more-lorem").html(newP);
+
+			$("#lorem").prepend(" [This part is a prepend] ");
+
+			$(".blue-div").text("Move your mouse around inside of this blue box. " + someText);
+		});
+	</script>
+</head>
+<body>
+	<h1 class = "boxes", id = "intro">jQuery Fun</h1>
+	<h2 class = "boxes", id = "sub-title">Doing stuff with jQuery</h2>
+	<p class = "boxes", id = "lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+	<p id = "more-lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+	<div class = "blue-div"></div>
+
+</body>
+</html>
