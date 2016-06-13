@@ -25,3 +25,9 @@ post '/students' do
 end
 
 # add static resources
+
+
+
+
+
+
